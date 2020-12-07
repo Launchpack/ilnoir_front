@@ -1,0 +1,16 @@
+@font-face {
+  font-family: 'Arita Buri Bold';
+  src: url(../fonts/eot/Arita-buriB.eot),
+    url(../fonts/eot/Arita-buriB.eot?#iefix) format('embedded-opentype'),
+    url(../fonts/woff/Arita-buriB.woff) format('woff'),
+    url(../fonts/ttf/Arita-buriB.ttf) format('truetype'),
+    url(../fonts/otf/Arita-buriB.otf) format('opentype')
+}
+@font-face {
+  font-family: 'Arita Buri SemiBold';
+  src: url(../fonts/eot/Arita-buriSB.eot),
+    url(../fonts/eot/Arita-buriSB.eot?#iefix) format('embedded-opentype'),
+    url(../fonts/woff/Arita-buriSB.woff) format('woff'),
+    url(../fonts/ttf/Arita-buriSB.ttf) format('truetype'),
+    url(../fonts/otf/Arita-buriSB.otf) format('opentype')
+}

@@ -1,0 +1,16 @@
+@font-face {
+  font-family: 'Arita Dotum Medium';
+  src: url(../fonts/eot/Arita-dotumM.eot),
+    url(../fonts/eot/Arita-dotumM.eot?#iefix) format('embedded-opentype'),
+    url(../fonts/woff/Arita-dotumM.woff) format('woff'),
+    url(../fonts/ttf/Arita-dotumM.ttf) format('truetype'),
+    url(../fonts/otf/Arita-dotumM.otf) format('opentype')
+}
+@font-face {
+  font-family: 'Arita Dotum SemiBold';
+  src: url(../fonts/eot/Arita-dotumSB.eot),
+    url(../fonts/eot/Arita-dotumSB.eot?#iefix) format('embedded-opentype'),
+    url(../fonts/woff/Arita-dotumSB.woff) format('woff'),
+    url(../fonts/ttf/Arita-dotumSB.ttf) format('truetype'),
+    url(../fonts/otf/Arita-dotumSB.otf) format('opentype')
+}

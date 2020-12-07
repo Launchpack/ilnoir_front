@@ -1,0 +1,43 @@
+@font-face {
+  font-family: 'BM DoHyeon';
+  src: url(../fonts/woff/BMDOHYEON.woff) format('woff'),
+    url(../fonts/ttf/BMDOHYEON.ttf) format('truetype')
+}
+
+@font-face {
+  font-family: 'BM HANNA';
+  src: url(../fonts/woff/BMHANNA_11yrs.woff) format('woff'),
+    url(../fonts/ttf/BMHANNA_11yrs.ttf) format('truetype')
+}
+
+@font-face {
+  font-family: 'BM YEONSUNG';
+  src: url(../fonts/woff/BMYEONSUNG.woff) format('woff'),
+    url(../fonts/ttf/BMYEONSUNG.ttf) format('truetype')
+}
+
+@font-face {
+  font-family: 'BM KIRANGHAERANG';
+  src: url(../fonts/woff/BMKIRANGHAERANG.woff) format('woff'),
+    url(../fonts/ttf/BMKIRANGHAERANG.ttf) format('truetype')
+}
+
+@font-face {
+  font-family: 'BM JUA';
+  src: url(../fonts/woff/BMJUA.woff) format('woff'),
+    url(../fonts/ttf/BMJUA.ttf) format('truetype')
+}
+
+@font-face {
+  font-family: 'BM HANNA Pro';
+  src: url(../fonts/woff/BMHANNAPro.woff) format('woff'),
+    url(../fonts/ttf/BMHANNAPro.ttf) format('truetype')
+}
+
+@font-face {
+  font-family: 'BM EULJIRO';
+  src: url(../fonts/woff/BMEULJIRO.woff) format('woff'),
+    url(../fonts/ttf/BMEULJIRO.ttf) format('truetype'),
+    url(../fonts/otf/BMEULJIRO.otf) format('opentype'),
+    url(../fonts/eot/BMEULJIRO.eot)
+}
