@@ -86,7 +86,7 @@
         this.getBrand();
 
         // 서비스 정보 가져오기
-        this.getServiceInfo();
+        // this.getServiceInfo();
 
         // PC Mode 여부 가져오기
         this.getServicePcMode();
@@ -239,10 +239,10 @@
         this.$axios.get('public/ui/brand/admin').then(res => {
           // this.$store.commit('setBrand', res.data);
           document.getElementsByTagName('html')[0].style.fontFamily = res.data.font;
-          this.$axios.get('public/service/grade').then(res => {
-            this.$store.commit('setGrade', res.data);
+          // this.$axios.get('public/service/grade').then(res => {
+          //   this.$store.commit('setGrade', res.data);
 
-          });
+          // });
 
           this.$store.commit('setBrand', res.data);
 

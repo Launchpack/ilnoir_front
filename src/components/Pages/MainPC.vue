@@ -213,15 +213,15 @@ export default {
       });
       this.setPageTypeOn();
       
-      this.$axios.get('/public/category')
-      .then(res => {
-        let list = res.data;
-        list.unshift({
-          id: "",
-          name: '전체보기'
-        })
-        this.$store.commit('setCategory', list);
-      })
+      // this.$axios.get('/public/category')
+      // .then(res => {
+      //   let list = res.data;
+      //   list.unshift({
+      //     id: "",
+      //     name: '전체보기'
+      //   })
+      //   this.$store.commit('setCategory', list);
+      // })
     },
   
   methods: {
