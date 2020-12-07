@@ -11,7 +11,7 @@
     </div>
 
     <div slot="center">
-      <img src="/static/image/icon/logo.svg" style="height:30px; margin: 0 16px;" @click="routerPush('insurance_search')"/>
+      <img src="/claim/static/image/icon/logo.svg" style="height:30px; margin: 0 16px;" @click="routerPush('insurance_search')"/>
     </div>
   </page-header>
 
