@@ -3,7 +3,7 @@
     <div class="flex-between" style="padding:60px 0 20px;color:#212121">
       <div class="size-18 weight-500">가입 보험 조회 내역</div>
       <div class="position-relative">
-        <div class="flex-align unselect size-14" style="color:#484848"  
+        <div class="flex-align unselect size-14" style="color:#484848"
           @click.stop.prevent="clickDrop">
           <div><span class="weight-500">{{ list[0].user.name }}</span>님</div>
           <i class="material-icons">arrow_drop_down</i>
@@ -13,13 +13,13 @@
           v-click-outside="clickOut">
             <div class="flex-align margin-bottom-10">
               <div class="name-btn text-center size-12"
-                style="margin-right:8px">이름</div> 
+                style="margin-right:8px">이름</div>
               <div class="size-14" style="color:#484848">{{ list[0].user.name }}</div>
             </div>
 
             <div class="flex-align margin-bottom-16">
               <div class="name-btn text-center size-12"
-                style="margin-right:8px">휴대폰번호</div> 
+                style="margin-right:8px">휴대폰번호</div>
               <div class="size-14" style="color:#484848">{{ list[0].user.phone }}</div>
             </div>
 
@@ -63,7 +63,7 @@
           <div class="col-5" style="color:#7e7e7e;padding:0 8px">보험금 청구</div>
           <div class="col-7" style="padding:0 8px">
             <template v-if="item.status===4">
-              <div class="btn-request size-14 unselect text-center weight-400" 
+              <div class="btn-request size-14 unselect text-center weight-400"
                 @click="clickBtn(item)">청구하기</div>
             </template>
           </div>
@@ -76,7 +76,7 @@
     <div style="width:calc(100% - 32px)">
       <div class="modal-white size-14 weight-400">
         <div>-일디랩은 고객의 보험금 청구 서비스를 제공할 뿐 보험금을 지급하는 보험회사는 아닙니다.</div>
-        <div>-보험금 지급의 역할은 보험회사에 있으며 <span style="color:#4f76ff">보험금 지급</span>과 관련해서는 
+        <div>-보험금 지급의 역할은 보험회사에 있으며 <span style="color:#4f76ff">보험금 지급</span>과 관련해서는
           알림 메시지에 기재된 <span style="color:#4f76ff">보험회사 연락처를 통해 진행</span>해주시기 바랍니다.</div>
       </div>
       <div class="flex-align weight-400 text-center">
@@ -111,7 +111,6 @@ export default {
         if(res.status===200) {
           if(res.data.docs.length>0) {
             this.list = res.data.docs;
-            this.list[0].status = 4;
           }
         }
       })

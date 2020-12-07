@@ -1,7 +1,7 @@
 export default {
     routes: [
         {
-            path: '/',
+            path: '/claim',
             component: () => import ('../components/Pages/MainPC'),
             children: [
                 {

@@ -6,9 +6,8 @@ const assetsPath = function (_path) {
 }
 
 module.exports = {
-  /*publicPath: process.env.NODE_ENV === 'production'
-    ? `https://launchpack-${process.env.VUE_APP_KEY}.s3.ap-northeast-2.amazonaws.com/ui/` : '/',*/
-  publicPath: '/',
+  publicPath: process.env.NODE_ENV === 'production'
+    ? `/claim/` : '/',
   runtimeCompiler: true,
   productionSourceMap: false,
   configureWebpack: {

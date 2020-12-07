@@ -30,7 +30,7 @@
         <div class="col-2">{{ item.insurance_price | currency }}</div>
         <div class="col-2">{{ statusKor(item) }}</div>
         <div class="col-2 flex-justify" v-if="item.status===4">
-          <div class="btn-request size-14 unselect text-center weight-400" 
+          <div class="btn-request size-14 unselect text-center weight-400"
             @click="clickBtn(item)">청구하기</div>
         </div>
       </div>
@@ -42,7 +42,7 @@
     <div>
       <div class="modal-white size-14 weight-400">
         <div>-일디랩은 고객의 보험금 청구 서비스를 제공할 뿐 보험금을 지급하는 보험회사는 아닙니다.</div>
-        <div>-보험금 지급의 역할은 보험회사에 있으며 <span style="color:#4f76ff">보험금 지급</span>과 관련해서는 
+        <div>-보험금 지급의 역할은 보험회사에 있으며 <span style="color:#4f76ff">보험금 지급</span>과 관련해서는
           알림 메시지에 기재된 <span style="color:#4f76ff">보험회사 연락처를 통해 진행</span>해주시기 바랍니다.</div>
       </div>
       <div class="flex-align weight-400 text-center">
@@ -75,9 +75,7 @@ export default {
       this.$axios.get(`http://54.180.114.33/api/user/${this.$route.query.id}/order`).then(res => {
         if(res.status===200) {
           if(res.data.docs.length>0) {
-            console.log(res.data.docs)
             this.list = res.data.docs;
-            this.list[0].status = 4;
           }
         }
       })

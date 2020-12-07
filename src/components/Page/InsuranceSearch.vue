@@ -2,11 +2,11 @@
   <div :style="pagePadding" style="background-color:#f8f8f8">
 
     <div class="flex-center" style="padding:48px 0 80px">
-      <img src="/static/image/icon/logo.svg" style="height:60px; margin: 0 16px;"
+      <img src="/claim/static/image/icon/logo.svg" style="height:60px; margin: 0 16px;"
           class="unselect" @click="routerPush('insurance_search')"/>
     </div>
 
-      <div class="size-19 text-center weight-500 margin-bottom-12" 
+      <div class="size-19 text-center weight-500 margin-bottom-12"
         style="color:#212121">가입 보험 조회</div>
       <div class="size-12 text-center" style="color:#515151">보험 가입 및 주문 시 기재한 이름과 휴대전화번호를 입력 해 주세요.</div>
 
@@ -15,7 +15,7 @@
           @update:value="updateName"></c-input-text>
         <c-input-text placeholder="휴대전화번호" :inputCustomStyle="inputCustomStyle"
           @update:value="updatePhone"></c-input-text>
-        <div v-if="noneState" class="size-12 weight-500" 
+        <div v-if="noneState" class="size-12 weight-500"
           style="color:#d92424;margin-top:8px">
           *가입된 정보가 없습니다. 입력하신 내용을 다시 확인해주세요.
         </div>
@@ -88,7 +88,7 @@ export default {
       }
 
       console.log('params',params)
-      
+
       this.$axios.post('http://54.180.114.33/api/user/sign/select', params).then(res => {
         console.log(res)
         if(res.status===200) {

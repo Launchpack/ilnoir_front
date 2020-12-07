@@ -5,13 +5,13 @@
     <div class="grid-box" :style="pcMaxWidth">
       <!-- 로고 -->
       <div class="col-2 flex-center">
-        <img src="/static/image/icon/logo.svg" style="height:52px; margin: 0 16px;"
+        <img src="/claim/static/image/icon/logo.svg" style="height:52px; margin: 0 16px;"
           class="unselect" @click="routerPush('insurance_search')"/>
       </div>
 
     </div>
   </div>
-  
+
 </div>
 </template>
 <script>
@@ -41,12 +41,12 @@ export default {
     }
   },
   created() {
-        
+
   },
   mounted() {
     this.initChildMenu();
   },
-  
+
   methods: {
     initChildMenu() {
       this.childrenMenu = [];
@@ -56,19 +56,19 @@ export default {
           if(this.currentItem(child)) {
             item.expand = true;
             this.childrenMenu = item.children;
-            this.hoverChildrenMenu = this.childrenMenu; 
+            this.hoverChildrenMenu = this.childrenMenu;
           }
         });
       });
     },
     clickMenu(item) {
       // this.childrenMenu = item.children;
-      // this.hoverChildrenMenu = this.childrenMenu; 
+      // this.hoverChildrenMenu = this.childrenMenu;
       this.routerPush(item.link);
     },
     onHover(item) {
       if(this.hoverChildrenMenu.length===0){
-       this.hoverChildrenMenu = this.childrenMenu; 
+       this.hoverChildrenMenu = this.childrenMenu;
       }
       this.childrenMenu = item.children;
     },
@@ -85,13 +85,13 @@ export default {
       if(routes.length>0) {
         query = {};
         routes.slice(1).forEach(res => {
-          res.split('&').forEach(item => { 
+          res.split('&').forEach(item => {
             let arr = item.split('=');
             query[arr[0]] = arr[1];
           });
         });
       }
-      
+
       return {
         path: path,
         query: query
@@ -99,12 +99,12 @@ export default {
     },
     currentItem(item) {
       let route = this.getPath(this.$route.fullPath.replace('/', ''));
-      
+
       let result = false;
-      
+
       if(!item.link_type || item.link_type === 'link') {
           let item_route = this.getPath(item.link);
-          
+
         if(item_route.path === route.path) {
           result = true;
           if(item_route.query) {
@@ -116,7 +116,7 @@ export default {
           }
         }
       }
-      
+
       return result;
     }
   },
@@ -142,11 +142,11 @@ export default {
   z-index: 100;
 }
 .category-indicator {
-  width: 100%; 
-  height: 3px; 
-  position: absolute; 
-  top: 58px; 
-  left: 0; 
+  width: 100%;
+  height: 3px;
+  position: absolute;
+  top: 58px;
+  left: 0;
   right: 0;
   z-index: 1;
 }
