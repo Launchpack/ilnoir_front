@@ -247,7 +247,7 @@
           this.$store.commit('setBrand', res.data);
 
           this.vRouter = true;
-          this.favicon = this.$store.getters.brand.favicon || '';
+          this.favicon = 'static/image/icon/logo.svg';
 
           this.$emit('updateHead');
         });
