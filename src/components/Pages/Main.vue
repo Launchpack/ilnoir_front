@@ -347,9 +347,9 @@ export default {
     }
   },
   created() {
-    this.$axios.get('public/ui/brand/admin').then(res => {
-        this.menu = res.data.menu;
-    });
+    // this.$axios.get('public/ui/brand/admin').then(res => {
+    //     this.menu = res.data.menu;
+    // });
     
     this.$store.commit('setAlivePage', ['Home','Search','Like','Notice','Event']);
 
@@ -529,19 +529,10 @@ export default {
       return deco;  
     },
     visibleMenu() {
-        if(this.$store.getters.brand.menu_type === 1) return false;
+        // if(this.$store.getters.brand.menu_type === 1) return false;
         if(this.$route.path.indexOf('signin')>-1) return true;
         else {
           let visible = false;
-          this.menu.forEach(item => {
-
-            if(this.$route.path.indexOf(item.link)>-1) {
-              visible = true;
-            }
-            else if (this.$route.path.indexOf('search')>-1)  {
-              visible = true;
-            }
-          });
 
           return visible;
         }

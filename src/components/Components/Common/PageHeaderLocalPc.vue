@@ -44,23 +44,9 @@ export default {
         
   },
   mounted() {
-    this.initChildMenu();
   },
   
   methods: {
-    initChildMenu() {
-      this.childrenMenu = [];
-      this.list.forEach(item => {
-        item.expand = false;
-        item.children.forEach(child => {
-          if(this.currentItem(child)) {
-            item.expand = true;
-            this.childrenMenu = item.children;
-            this.hoverChildrenMenu = this.childrenMenu; 
-          }
-        });
-      });
-    },
     clickMenu(item) {
       // this.childrenMenu = item.children;
       // this.hoverChildrenMenu = this.childrenMenu; 
@@ -121,16 +107,9 @@ export default {
     }
   },
   computed: {
-    list() {
-      let menu = this.$store.getters.brand.menu_set.filter(item =>{ return item.device === 'pc' })[0].menu;
-      menu.forEach(item=> { item.expand = false; });
-      return menu;
-    }
+
   },
   watch: {
-    '$route'() {
-      this.initChildMenu();
-    }
   }
 }
 </script>

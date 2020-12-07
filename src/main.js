@@ -383,7 +383,7 @@ Vue.mixin({
     pcMaxWidth() {
       if (this.$store.getters.device === 'pc') {
         return {
-          width: this.maxWidth,
+          width: '1200px',
         }
       }
     },
@@ -394,12 +394,12 @@ Vue.mixin({
       return this.$store.getters.user;
     },
     pagePadding() {
-      let padding = this.$store.getters.brand.layout_padding +'px';
+      // let padding = this.$store.getters.brand.layout_padding +'px';
       // device pc 일때, return {}
       if (this.$store.getters.device === 'mobile') {
         return {
-          paddingLeft: padding,
-          paddingRight: padding
+          paddingLeft: '16px',
+          paddingRight: '16px'
         }
       }
     },
@@ -415,7 +415,7 @@ Vue.mixin({
       return this.$store.getters.brand.layout_gutters+'px';
     },
     maxWidth() {
-      return this.$store.getters.brand.layout_maxwidth+'px';
+      return 1200+'px';
     },
     radius() {
       let radius = '0px';

@@ -1,5 +1,6 @@
 <template>
-<div style="background-color:#f8f8f8" :style="pagePadding">
+<div style="background-color:#f8f8f8" :style="pagePadding"
+  v-if="list&&list.length>0">
     <div class="flex-between" style="padding:60px 0 20px;color:#212121">
       <div class="size-18 weight-500">가입 보험 조회 내역</div>
       <div class="position-relative">
@@ -111,7 +112,6 @@ export default {
         if(res.status===200) {
           if(res.data.docs.length>0) {
             this.list = res.data.docs;
-            this.list[0].status = 4;
           }
         }
       })
