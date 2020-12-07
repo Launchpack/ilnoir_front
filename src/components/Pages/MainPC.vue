@@ -196,9 +196,9 @@ export default {
     }
   },
   created() {
-    this.$axios.get('public/ui/brand/admin').then(res => {
-        this.menu = res.data.menu_pc;
-    });
+    // this.$axios.get('public/ui/brand/admin').then(res => {
+    //     this.menu = res.data.menu_pc;
+    // });
 
       this.$store.commit('setAlivePage', ['Home','Category','Product','Search','BoardCat','Like','Notice', 'PartnerDetail']);
 
@@ -372,10 +372,6 @@ export default {
         }
       }
       
-      
-      if(this.$refs.drawer.active) {
-        this.$refs.drawer.close();
-      }
       
       if(this.footerTo) {
         clearTimeout(this.footerTo);
