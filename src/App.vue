@@ -45,6 +45,10 @@
       this.validAuth();
 
       this.sendToNativeApp();
+
+      this.vRouter = true;
+      this.favicon = 'static/image/icon/logo.svg';
+      this.vHeadDone = true;
     },
     data() {
       return {
@@ -83,7 +87,7 @@
         this.setMetaViewport();
 
         // 브랜드 디자인 가져오기
-        this.getBrand();
+        // this.getBrand();
 
         // 서비스 정보 가져오기
         // this.getServiceInfo();
@@ -92,7 +96,7 @@
         this.getServicePcMode();
 
         // API Key 가져오기
-        this.getAPIKey();
+        // this.getAPIKey();
 
         //기본 공통 스타일 지정
         this.setCommonStyle();
@@ -238,16 +242,19 @@
       getBrand() {
         this.$axios.get('public/ui/brand/admin').then(res => {
           // this.$store.commit('setBrand', res.data);
+
           document.getElementsByTagName('html')[0].style.fontFamily = res.data.font;
+
           // this.$axios.get('public/service/grade').then(res => {
           //   this.$store.commit('setGrade', res.data);
 
           // });
 
-          this.$store.commit('setBrand', res.data);
+          // this.$store.commit('setBrand', res.data);
 
           this.vRouter = true;
           this.favicon = 'static/image/icon/logo.svg';
+
 
           this.$emit('updateHead');
         });

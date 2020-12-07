@@ -84,7 +84,7 @@ export default {
     }
   },
   created() {
-    this.getList();
+    // this.getList();
     this.getVisible();
   },
   mounted() {
