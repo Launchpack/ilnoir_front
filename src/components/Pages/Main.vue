@@ -177,7 +177,7 @@ export default {
             "depth1": "Gnbs",
             "visible": false
           },
-          "name": "insurance_search",
+          "name": "claim/insurance_search",
           "header": false
         },
         {

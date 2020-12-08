@@ -9,7 +9,8 @@
         <c-input-text placeholder="이름" :inputCustomStyle="inputCustomStyle"
           @update:value="updateName"></c-input-text>
         <c-input-text placeholder="휴대전화번호" :inputCustomStyle="inputCustomStyle"
-          @update:value="updatePhone"></c-input-text>
+          @update:value="updatePhone"
+          @onEnter="clickRequest"></c-input-text>
         <div v-if="noneState" class="size-12 weight-500" 
           style="color:#d92424;margin-top:10px">
           *가입된 정보가 없습니다. 입력하신 내용을 다시 확인해주세요.
@@ -18,7 +19,8 @@
 
       <div style="padding:0 8px" class="flex-justify">
         <div class="full-width btn size-16 weight-400 unselect"
-          @click="clickRequest">조회하기</div>
+          @click="clickRequest" tabindex="0"
+          @keyup.enter="clickRequest">조회하기</div>
       </div>
     </div>
   </div>
