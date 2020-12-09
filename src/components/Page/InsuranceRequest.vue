@@ -406,7 +406,7 @@ export default {
         border: '1px solid #dddddd'
       },
       params: {
-        order_id: '5fbb8f705b220d3ebeaedc59',
+        order_id: '',
         identification: [],
         bank_book: [],
         invoice: [],
@@ -418,7 +418,8 @@ export default {
         lost: [],
         return: [],
         privacy: [],
-        send_back: []
+        send_back: [],
+        accident: []
       },
       commonList: ['privacy', 'identification', 'bank_book', 'invoice', 'delivery', 'seller'],
       acciList: ['damage', 'misdelivery', 'theft', 'lost', 'return'],
@@ -491,8 +492,84 @@ export default {
     clickDrop() {
       this.dropState = !this.dropState;
     },
-    clickRequest() {
-      console.log('post');
+    async clickRequest() {
+      let accident = [];
+      let params = Object.entries(this.params);
+      let param = {};
+      if(this.agreeState === false) {
+        this.privacyInvalid = true;
+      }
+      else {
+        await params.forEach(item => {
+          if(item[1].length===0) {
+            if(this.commonList.indexOf(item[0])>-1) {
+              this.commonInvalid = true;
+            }
+            else if(this.acciList.indexOf(item[0])>-1) {
+              accident.push(false);
+            }
+          }
+          else {
+            if(this.acciList.indexOf(item[0])>-1) {
+              accident.push(true);
+              param['accident'] = item[1][0];
+              if(item[0]==='damage') {
+                param['accident_type'] = '파손시'
+              }
+              else if(item[0]==='misdelivery') {
+                param['accident_type'] = '오배송'
+              }
+              else if(item[0]==='theft') {
+                param['accident_type'] = '물품 도난'
+              }
+              else if(item[0]==='lost') {
+                param['accident_type'] = '분실'
+              }
+              else if(item[0]==='return') {
+                param['accident_type'] = '반송'
+              }
+            }
+            else {
+              param[item[0]] = item[1][0];
+            }
+          }
+        });
+      }
+
+      if(accident.indexOf(true)===-1) {
+        this.acciInvalid = true;
+      }
+      
+      if(this.commonInvalid | this.acciInvalid | this.privacyInvalid) return;
+
+      let formData = new FormData();
+      let headers = { 'Content-Type': 'multipart/form-data' }
+      // param.order_id = this.detail._id;
+      formData.append('order_id', this.detail._id);
+      this.addFormData(formData, param);
+      console.log('formdata',formData,'param',param)
+      // params.order_id = this.detail._id;
+      this.$axios.post(`http://54.180.114.33/api/user/claim`, formData, headers).then(res => {
+        console.log('res',res)
+        if(res.status===200) {
+          this.routerPush('request_done')
+        }
+      });
+
+      console.log('done')
+    },
+    addFormData (formData, param) {
+      for (let [key, value] of Object.entries(param)) {
+          for (let item of value) {
+
+              formData.append(key, item);
+              console.log(key, value, item)
+              console.log('formData',formData)
+          }
+      }
+      // for (let file of this.value[]) {
+      //     formData.append(`file${i}`, file) // note, no square-brackets
+      // }
     },
     clickModal() {
       this.commonInvalid = false;
