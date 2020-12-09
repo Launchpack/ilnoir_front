@@ -488,6 +488,21 @@ export default {
             if(this.acciList.indexOf(item[0])>-1) {
               accident.push(true);
               param['accident'] = item[1][0];
+              if(item[0]==='damage') {
+                param['accident_type'] = '파손시'
+              }
+              else if(item[0]==='misdelivery') {
+                param['accident_type'] = '오배송'
+              }
+              else if(item[0]==='theft') {
+                param['accident_type'] = '물품 도난'
+              }
+              else if(item[0]==='lost') {
+                param['accident_type'] = '분실'
+              }
+              else if(item[0]==='return') {
+                param['accident_type'] = '반송'
+              }
             }
             else {
               param[item[0]] = item[1][0];
@@ -505,10 +520,9 @@ export default {
       let formData = new FormData();
       let headers = { 'Content-Type': 'multipart/form-data' }
       // param.order_id = this.detail._id;
-      console.log(param)
       formData.append('order_id', this.detail._id);
       this.addFormData(formData, param);
-      
+      console.log('formdata',formData,'param',param)
       // params.order_id = this.detail._id;
       this.$axios.post(`http://54.180.114.33/api/user/claim`, formData, headers).then(res => {
         console.log('res',res)
