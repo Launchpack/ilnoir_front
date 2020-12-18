@@ -235,7 +235,7 @@
         if(this.minMsg) this.errorMsg = this.minMsg;
         else this.errorMsg = '';
         // validation이 필수가 아닌 경우
-        if (!this.validate.valid_required) return;
+        if (!this.validate || !this.validate.valid_required) return;
 
         let props = {
           value: this.value,

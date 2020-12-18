@@ -73,7 +73,7 @@ export default {
   },
   methods: {
     getData() {
-      this.$axios.get(`http://54.180.114.33/api/user/${this.$route.query.id}/order`).then(res => {
+      this.$axios.get(`/api/user/${this.$route.query.id}/order`).then(res => {
         if(res.status===200) {
           if(res.data.docs.length>0) {
             this.list = res.data.docs;

@@ -89,7 +89,7 @@ export default {
 
       console.log('params',params)
 
-      this.$axios.post('http://54.180.114.33/api/user/sign/select', params).then(res => {
+      this.$axios.post('/api/user/sign/select', params).then(res => {
         console.log(res)
         if(res.status===200) {
           this.routerPush(`insurance?id=${res.data.user_id}`);

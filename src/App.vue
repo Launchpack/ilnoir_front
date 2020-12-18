@@ -93,7 +93,8 @@
         // this.getServiceInfo();
 
         // PC Mode 여부 가져오기
-        this.getServicePcMode();
+        //this.getServicePcMode();
+        this.setDevice();
 
         // API Key 가져오기
         // this.getAPIKey();
