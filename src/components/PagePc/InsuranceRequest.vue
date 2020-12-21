@@ -46,7 +46,9 @@
             </div>
             <div v-else class="size-13 flex-align">
               <a class="btn-download unselect weight-400"
-                href="static/image/icon/ic_apple.png" download
+                href="https://ilnoir.s3.ap-northeast-2.amazonaws.com/claim/static/form/privacy.pdf"
+                download
+                target="_blank"
                 @click="clickDown('privacy')">양식 다운로드</a>
               <input type="file" id="privacy" class="input-hidden"
                 @change="e => onFileChange(e,'privacy')">
@@ -228,7 +230,9 @@
             <div v-else class="size-13 flex-align">
               <a class="btn-download unselect weight-400"
                 v-if="acciState('theft')"
-                href="static/image/icon/ic_apple.png" download
+                href="https://ilnoir.s3.ap-northeast-2.amazonaws.com/claim/static/form/theft.pdf" 
+                download
+                target="_black"
                 @click="clickDown('theft')">양식 다운로드</a>
               <input type="file" id="theft" class="input-hidden"
                 @change="e => onFileChange(e,'theft')">
@@ -254,7 +258,9 @@
             <div v-else class="size-13 flex-align">
               <a class="btn-download unselect weight-400"
                 v-if="acciState('lost')"
-                href="static/image/icon/ic_apple.png" download
+                href="https://ilnoir.s3.ap-northeast-2.amazonaws.com/claim/static/form/lost.pdf" 
+                download
+                target="_black"
                 @click="clickDown('lost')">양식 다운로드</a>
               <input type="file" id="lost" class="input-hidden"
                 @change="e => onFileChange(e,'lost')">
@@ -311,7 +317,141 @@
           </div>
         </div>
         <div v-if="dropState" class="drop-box size-14">
-          개인정보 처리방침
+          <p>주식회사 일루와디지털랩 (이하 &quot;회사&quot;라 함)은 아래와 같이 개인정보취급방침을 정하여 이용자 권익 보호에 최선을 다하고 있습니다. 본 개인정보취급방침은 당사가 본 웹사이트(http://ilnoir.us)에서 이용자의 정보를 수집 및 활용하는 방법과 범위를 알려 드리기 위한 내용을 담고 있습니다. 본 웹사이트를 이용하시거나 개인정보를 제출하시기 전에 아래 내용을 먼저 확인 바랍니다.<br>
+            </p>
+            ​
+            ​
+            <div><strong><span>[</span></strong><strong><span>수집하는 개인 정보의 항목 및 수집 방법<span>]</span></span></strong></div>
+            ​
+            <div><span><span>&nbsp;</span>1. 회사는 보험가입 회원의 보험금 청구 서비스 제공<span>, </span>원활한 고객상담을 위해 이용자의 동의 하에 아래와 같은 정보를 <span>API</span>의 방법으로 필수항목으로 수집하고 있습니다<span>.&nbsp;</span></span></div>
+            ​
+            <div><span><span>&nbsp;</span>2. </span><span>회사가 제공하는 클레임 서비스를 이용하는 고객</span></div>
+            ​
+            <div><span>&nbsp; &nbsp; - </span><span>성명<span>(</span>국문<span>, </span>영문<span>), </span>이메일<span>, </span>휴대폰번호<span>, </span>신분증사본<span>, </span>보험금 수령 계좌정보<span>, </span>보험 가입시 제공 동의한 보험청약정보</span></div>
+            ​
+            <div><span><span>&nbsp;</span>3. </span><span>서비스 이용과정이나 사업처리 과정에서 아래와 같은 정보들이 자동으로 생성되어 수집될 수 있습니다<span>.</span></span></div>
+            ​
+            <div><span>&nbsp; &nbsp;- </span><span>쿠키<span>, </span>서비스 이용 기록<span>, </span>불량 이용 기록</span></div>
+            ​
+            <div><span><span>&nbsp;</span>4. </span><span>개인정보 수집방법</span></div>
+            ​
+            <div><span>&nbsp; &nbsp; </span><span>회사는 다음과 같은 방법으로 개인정보를 수집합니다<span>.</span></span></div>
+            ​
+            <div><span>&nbsp; &nbsp;- </span><span>이용하신 플랫폼에서 보험계약가입시 회사로 정보제공을 동의하신 내용<span>(</span>보험청약정보<span>)</span></span></div>
+            ​
+            <div><span>&nbsp; &nbsp;- </span><span>보험금 청구 서비스를 사용할 경우 제공에 동의하신 내용</span></div>
+            ​
+            <p><span>&nbsp;</span></p>
+            ​
+            <div><span>▶개인정보의 수집 목적<span>&nbsp;</span></span></div>
+            ​
+            <div><span><span>&nbsp;</span>1. </span><span>서비스 제공 이행</span></div>
+            ​
+            <div><span>&nbsp; &nbsp;</span><span>보험가입에 따른 중요 가입안내 보험계약사실 내용 전달<span>, </span>보험금 청구 시 원활한 청구 서비스 제공</span></div>
+            ​
+            <p><span>&nbsp;</span></p>
+            ​
+            <div><span>▶개인정보 수집의 동의</span></div>
+            ​
+            <div><span>&nbsp;</span>1. 회사는 귀하의 개인정보 수집에 대한 동의를 받고 있습니다<span>. </span>귀하의 개인정보 수집과 관련하여 본 웹사이트의 개인정보취급방침 또는 이용약관의 내용에 대한 『동의』버튼 또는 『동의 안함』 버튼을 클릭할 수 있는 절차를 마련하고 있으며<span>, </span>귀하가 『동의』버튼을 클릭하면 개인정보 수집에 대해 동의한 것으로 봅니다<span>.</span></span></div>
+            ​
+            <p><span>&nbsp;</span></p>
+            ​
+            <div><span>▶개인정보 보유 및 이용기간</span></div>
+            ​
+            <div><span>&nbsp;</span>1. 보험금청구 서비스 이용 시 제공에 동의하신 정보 중<span>, </span>고유식별정보 및 계좌관련 정보는 보험사 제출 이후 즉시 파기합니다<span>.</span></span></div>
+            ​
+            <div><span>&nbsp;</span>2. 고유식별정보를 제외한<span>, </span>보험계약과 관련된 정보는 계약종료 후 최대 <span>5</span>년간 보관하며 보험계약과 관련이 없는 비필수 정보는 즉시 파기합니다<span>.</span></span></div>
+            ​
+            <p><span>&nbsp;</span></p>
+            ​
+            <div><span>▶개인정보의 파기절차 및 방법</span></div>
+            ​
+            <div><span>&nbsp;</span>1. 종이에 출력한 개인정보<span>: </span>분쇄기로 분쇄하거나 소각</span></div>
+            ​
+            <div><span>&nbsp;</span>2. 전자적 파일로 저장한 개인정보<span>: </span>기록을 재생할 수 없는 기술적 방법을 사용하여 삭제</span></div>
+            ​
+            <p><span>&nbsp;</span></p>
+            ​
+            <div><span>▶개인정보 자동수집 장치<span>(</span>쿠키<span>-cookie)</span>의 설치<span>, </span>운영 및 그 거부에 관한 사항</span></div>
+            ​
+            <div><span>&nbsp;</span>1. 회사는 개인화되고 맞춤화된 서비스를 제공하기 위해서 이용자의 정보를 저장하고 수시로 불러오는<span> ‘</span>쿠키<span>(cookie)’ </span>등을 운용합니다<span>. </span>쿠키란 회사의 웹사이트를 운영하는데 이용되는 서버가 이용자의 브라우저에 보내는 아주 작은 텍스트 파일로서 이용자의 컴퓨터 하드디스크에 저장됩니다<span>.</span></span></div>
+            ​
+            <p><span>&nbsp;</span></p>
+            ​
+            <div><span>▶ 쿠키 등 사용 목적</span></div>
+            ​
+            <div><span>&nbsp;</span>1. 회원과 비회원의 접속 빈도나 방문 시간 등을 분석<span>, </span>이용자의 취향과 관심분야를 파악 및 자취 추적<span>, </span>각종</span></div>
+            ​
+            <div><span>이벤트 참여 정도 및 방문 회수 파악 등을 통한 타겟 마케팅 및 개인 맞춤 서비스 제공</span></div>
+            ​
+            <div><span>&nbsp;</span>2. 귀하는 쿠키 설치에 대한 선택권을 가지고 있습니다<span>. </span>따라서<span>, </span>귀하는 웹 브라우저에서 옵션을 설정함으로써 모든 쿠키를 허용하거나<span>, </span>쿠키가 저장될 때마다 확인을 거치거나<span>, </span>아니면 모든 쿠키의 저장을 거부할 수도 있습니다<span>.</span></span></div>
+            ​
+            <div><span>▶ 쿠키 설정 거부 방법</span></div>
+            ​
+            <div><span>&nbsp;</span>1. 쿠키 설정을 거부하는 방법으로는 이용자가 사용하시는 웹 브라우저의 옵션을 택함으로써 모든 쿠키를 허용하거나 쿠키를 저장할 때마다 확인을 거치거나<span>, </span>모든 쿠키의 저장을 거부할 수 있습니다<span>. </span>단<span>, </span>이용자께서 쿠키 설치를 거부하였을 경우 서비스 제공에 어려움이 있을 수 있습니다<span>.</span></span></div>
+            ​
+            <div><span>&nbsp;</span>2. 설정방법 예<span>(</span>인터넷 익스플로어의 경우<span>) : </span>웹 브라우저 상단의 도구<span> &gt; </span>인터넷 옵션<span> &gt; </span>개인정보 </span></div>
+            ​
+            <p><strong><span>&nbsp;</span></strong></p>
+            ​
+            <div><strong><span>[</span></strong><strong><span>개인정보의 공유 및 제공<span>]</span></span></strong></div>
+            ​
+            <div><span>&nbsp;</span>1. 회사는 이용자들의 개인정보를 ‘개인정보의 수집목적’에서 고지한 범위내에서 사용하며<span>, </span>이용자의 사전 동의 없이는 동 범위를 초과하여 이용하거나 원칙적으로 이용자의 개인정보를 외부에 공개하지 않습니다<span>. </span>다만<span>, </span>이용자들이 사전에 공개에 동의 경우 및 법령의 규정에 의거하거나<span>, </span>수사 목적으로 법령에 정해진 절차와 방법에 따라 수사기관의 요구가 있는 경우는 예외로 합니다<span>.</span></span></div>
+            ​
+            <div><span>&nbsp;</span>2. 회사는 서비스 제공을 위해 회원의 동의를 얻는 등 적법한 절차를 통하여 아래와 같이 개인정보를 제공할 수 있습니다<span>.</span></span></div>
+            ​
+            <table>
+              <tbody>
+              <tr>
+                <th>공유받는 자</th>
+                <th>공유하는 항목</th>
+                <th>공유받는자의 이용목적</th>
+                <th>보유 및 이용기간</th>
+              </tr>
+              <tr>
+                <td>
+                  <div>에이스아메리칸화재해상보험</div>
+                </td>
+                <td>
+                  <div>보험을 가입하고, 보험금청구 서비스 이용에 동의한 회원의 성명,<br>휴대전화번호, 이메일, 상품구매정보 등 보험청구 서비스 이용에 필요한 정보</div>
+                </td>
+                <td>
+                  <div>- 보험사고 손해사정심사</div>
+                  <div>- 보험금 지급</div>
+                  <div>- 관련된 클레임 업무</div>
+                </td>
+                <td>
+                  <div>- 법령에 따라 보험계약과 관련된 정보는 계약종류 후 최대 5년간 보관</div>
+                  <div>- 보험계약과 관련이 없는 비필수 정보는 즉시 파기</div>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+            ​
+            <p><span>&nbsp;</span>3. 회원은 개인정보의 제<span>3</span>자 제공에 대하여 동의를 하지 않을 수 있고<span>, </span>언제든지 제<span>3</span>자 제공 동의를 철회할 수 있습니다<span>. </span>동의를 거부하시는 경우에 제<span>3</span>자 제공에 기반한 관련 서비스의 이용제공이 제한될 수 있습니다<span>.</span></span></p>
+            ​
+            <div><span>[</span><span>개인정보의 보호<span>]</span></span></div>
+            ​
+            <div><span>회사는 이용자의 개인정보의 취급에 있어 분실<span>, </span>도난<span>, </span>누출<span>, </span>변조 또는 훼손이 일어나지 않도록 각종 기술적<span>/</span>관리적 대책을 강구하고 있습니다<span>. </span>다만<span>, </span>비밀번호 등 주요 개인정보를 이용자 스스로가 관리를 허술하게 하여 분실<span>, </span>도난<span>, </span>누출시켰을 경우 그 책임은 이용자에게 있으므로<span>, </span>관리에 유의하시기 바랍니다<span>.</span></span></div>
+            ​
+            <p><span>&nbsp;</span></p>
+            ​
+            <div><span>[</span><span>개인정보관리책임자 및 담당자의 연락처<span>]</span></span></div>
+            ​
+            <div><span>귀하께서는 회사의 서비스를 이용하시며 발생하는 모든 개인정보보호 관련 민원을 개인정보관리책임자에게 신고하실 수 있습니다<span>.</span></span></div>
+            ​
+            <div><span>회사는 이용자들의 신고사항에 대해 신속하게 충분한 답변을 드릴 것입니다<span>.&nbsp;</span></span></div>
+            ​
+            <p><span>&nbsp;</span></p>
+            ​
+            <div><span>[</span><span>개인정보 관리책임자<span>]</span></span></div>
+            ​
+            <div><span>- </span><span>이름<span> : </span>고경엽</span></div>
+            ​
+            <div><span>- </span><span>전화<span> : 02-6291-9600</span></span></div>
+            ​
+            <div><span>- </span><span>메일<span> : eder.ko@ilnoir.us</span></span></div>
         </div>
 
       </div>
@@ -675,5 +815,19 @@ export default {
   position: fixed;
   top: -100px;
   left: -100px;
+}
+table {
+  border-collapse: collapse;
+  border: 2px solid black;
+}
+th, td {
+  border: 1px solid black;
+}
+th {
+  text-align: center;
+  padding: 6px 12px;
+}
+td {
+  padding: 6px 12px;
 }
 </style>
