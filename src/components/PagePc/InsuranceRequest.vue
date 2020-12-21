@@ -675,12 +675,17 @@ export default {
     },
     addFormData (formData, param) {
       for (let [key, value] of Object.entries(param)) {
+        if(key === 'accident_type') {
+          formData.append(key, value);
+        }
+        else {
           for (let item of value) {
 
               formData.append(key, item);
               console.log(key, value, item)
               console.log('formData',formData)
           }
+        }
       }
       // for (let file of this.value[]) {
       //     formData.append(`file${i}`, file) // note, no square-brackets
