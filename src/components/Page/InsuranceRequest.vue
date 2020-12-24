@@ -37,7 +37,7 @@
         
         <div class="flex-align list-content">
           <div class="col-5" style="color:#7e7e7e;padding:0 8px">보험상품</div>
-          <div class="col-7" style="padding:0 8px">{{ detail.insurance.name }}</div>
+          <div class="col-7" style="padding:0 8px">{{ insuranceProductName(detail.total_product_price) }}</div>
         </div>
 
         <div class="flex-align list-content">
@@ -57,7 +57,7 @@
 
         <div class="flex-align list-content">
           <div class="col-5" style="color:#7e7e7e;padding:0 8px">보험가입금액</div>
-          <div class="col-7" style="padding:0 8px">{{ detail.insurance_price | currency }}</div>
+          <div class="col-7" style="padding:0 8px">{{ detail.total_product_price | currency }}</div>
         </div>
 
       </div>
@@ -569,6 +569,15 @@ export default {
     this.getData();
   },
   methods: {
+    insuranceProductName(price) {
+      let insurance_product = '';
+      if (price <= 1000000) {
+          insurance_product = 'Chubb\n구매물품\n보상보험';
+      } else if (price > 1000000 && price < 5000000) {
+          insurance_product = 'Chubb\n카고플러스';
+      }
+      return insurance_product;
+    },
     getData() {
       this.$axios.get(`/api/user/${this.$route.query.user}/order/${this.$route.query.id}`).then(res => {
         if(res.status===200) {

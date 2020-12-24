@@ -24,11 +24,11 @@
     <div v-for="(item,idx) in list" :key="'key-'+idx">
       <div class="list-content flex-align text-center size-14 weight-400" style="color:#212121"
         :style="[item.status===5 ? {color: '#aaaaaa'} : {color: '#212121'}]">
-        <div class="col-2">{{ item.insurance.name }}</div>
+        <div class="col-2">{{ insuranceProductName(item.total_product_price) }}</div>
         <div class="col-1">{{ item.user.name }}</div>
         <div class="col-2">{{ item.stock_number }}</div>
         <div class="col-1">{{ computedDate(item) }}</div>
-        <div class="col-2">{{ item.insurance_price | currency }}</div>
+        <div class="col-2">{{ item.total_product_price | currency }}</div>
         <div class="col-2">{{ statusKor(item) }}</div>
         <div class="col-2 flex-justify" v-if="item.status===4">
           <div class="btn-request size-14 unselect text-center weight-400"
@@ -72,6 +72,15 @@ export default {
     this.getData();
   },
   methods: {
+    insuranceProductName(price) {
+      let insurance_product = '';
+      if (price <= 1000000) {
+          insurance_product = 'Chubb\n구매물품\n보상보험';
+      } else if (price > 1000000 && price < 5000000) {
+          insurance_product = 'Chubb\n카고플러스';
+      }
+      return insurance_product;
+    },
     getData() {
       this.$axios.get(`/api/user/${this.$route.query.id}/order`).then(res => {
         if(res.status===200) {

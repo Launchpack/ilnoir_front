@@ -33,7 +33,7 @@
     <div v-for="(item,idx) in list" :key="'key-'+idx">
       <div class="size-14 weight-400 margin-bottom-24" style="color:#212121">
         <div :style="[item.status===5 ? {backgroundColor: '#8f8f8f'} : {backgroundColor: '#4f76ff'}]"
-          class="title-bar">{{ item.insurance.name }}</div>
+          class="title-bar">{{ insuranceProductName(item.total_product_price) }}</div>
 
         <div class="flex-align list-content">
           <div class="col-5" style="color:#7e7e7e;padding:0 8px">피보험자명</div>
@@ -52,7 +52,7 @@
 
         <div class="flex-align list-content">
           <div class="col-5" style="color:#7e7e7e;padding:0 8px">보험가입금액</div>
-          <div class="col-7" style="padding:0 8px">{{ item.insurance_price | currency }}</div>
+          <div class="col-7" style="padding:0 8px">{{ item.total_product_price | currency }}</div>
         </div>
 
         <div class="flex-align list-content">
@@ -107,6 +107,15 @@ export default {
     this.getData();
   },
   methods: {
+    insuranceProductName(price) {
+      let insurance_product = '';
+      if (price <= 1000000) {
+          insurance_product = 'Chubb\n구매물품\n보상보험';
+      } else if (price > 1000000 && price < 5000000) {
+          insurance_product = 'Chubb\n카고플러스';
+      }
+      return insurance_product;
+    },
     getData() {
       this.$axios.get(`/api/user/${this.$route.query.id}/order`).then(res => {
         if(res.status===200) {
