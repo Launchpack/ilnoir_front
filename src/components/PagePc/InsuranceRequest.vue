@@ -20,11 +20,11 @@
       </div>
 
       <div class="table-content flex-align size-15 text-center">
-        <div class="col-4">{{ detail.insurance.name }}</div>
+        <div class="col-4">{{ insuranceProductName(detail.total_product_price) }}</div>
         <div class="col-2">{{ detail.user.name }}</div>
         <div class="col-2">{{ detail.stock_number }}</div>
         <div class="col-2">{{ computedDate() }}</div>
-        <div class="col-2">{{ detail.insurance_price | currency }}</div>
+        <div class="col-2">{{ detail.total_product_price | currency }}</div>
       </div>
     </div>
 
@@ -545,6 +545,15 @@ export default {
     this.getData();
   },
   methods: {
+    insuranceProductName(price) {
+      let insurance_product = '';
+      if (price <= 1000000) {
+          insurance_product = 'Chubb\n구매물품\n보상보험';
+      } else if (price > 1000000 && price < 5000000) {
+          insurance_product = 'Chubb\n카고플러스';
+      }
+      return insurance_product;
+    },
     getData() {
       this.$axios.get(`/api/user/${this.$route.query.user}/order/${this.$route.query.id}`).then(res => {
         if(res.status===200) {
