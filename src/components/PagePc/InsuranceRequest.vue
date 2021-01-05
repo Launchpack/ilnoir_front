@@ -163,6 +163,28 @@
             </div>
         </div>
 
+        <div class="table-contents flex-between">
+          <div class="flex-align">
+            <i class="material-icons" style="margin-right:8px;font-size:20px"
+              :style="params['capture'].length>0 ? {color:'#4f76ff'} : {color:'#dddddd'} ">check</i>
+            <div class="size-15 weight-400" style="margin-right:20px">거래금액을 입증할 서류 및 인터넷화면캡쳐</div>
+            <div class="size-14 weight-400" style="color:#9e9e9e">구매 영수증 및 구매확인 화면캡쳐</div>
+          </div>
+
+            <div v-if="params['capture'].length>0" class="flex-align size-13"
+              style="color:#696969">
+              <div>{{ params['capture'][0][0].name }}</div>
+              <div class="btn-delete unselect weight-400" style="margin-left:12px"
+                @click="clickDelete('capture')">삭제</div>
+            </div>
+            <div v-else class="size-13 flex-align">
+              <input type="file" id="capture" class="input-hidden"
+                @change="e => onFileChange(e,'capture')">
+              <label class="btn-upload unselect weight-400" style="margin-left:12px"
+                for="capture">파일첨부</label>
+            </div>
+        </div>
+
       </div>
     </div>
 
@@ -174,7 +196,8 @@
       <div class="size-15" style="border-top:2px solid #696969">
         <div class="table-contents flex-between">
           <div class="flex-align">
-            <div class="size-15 weight-400">1. 파손시</div>
+            <div class="size-15 weight-400" style="margin-right:16px">1. 파손시</div>
+            <div class="size-14 weight-400" style="color:#bbbbbb">파손물품사진 / 수리비내역서 (파손품 수리시) / 화물수령확인서 (수리불가로 전손시)</div>
           </div>
 
             <div v-if="params['damage'].length>0" class="flex-align size-13"
@@ -534,9 +557,10 @@ export default {
         return: [],
         privacy: [],
         send_back: [],
-        accident: []
+        accident: [],
+        capture: []
       },
-      commonList: ['privacy', 'identification', 'bank_book', 'invoice', 'delivery', 'seller'],
+      commonList: ['privacy', 'identification', 'bank_book', 'invoice', 'delivery', 'seller', 'capture'],
       acciList: ['damage', 'misdelivery', 'theft', 'lost', 'return'],
       selectedAcci: undefined
     }

@@ -75,8 +75,8 @@
 
             <div v-if="params['privacy'].length>0" class="flex-between size-13"
               style="color:#696969;padding:0 12px 0 28px">
-              <div>{{ params['privacy'][0][0].name }}</div>
-              <div class="btn-delete unselect weight-400"
+              <div class="col-9">{{ params['privacy'][0][0].name }}</div>
+              <div class="btn-delete unselect weight-400 col-3 text-center"
                 @click="clickDelete('privacy')">삭제</div>
             </div>
             <div v-else class="size-13 flex-align">
@@ -102,8 +102,8 @@
 
             <div v-if="params['identification'].length>0" class="flex-between size-13"
               style="color:#696969;padding:0 12px 0 28px">
-              <div>{{ params['identification'][0][0].name }}</div>
-              <div class="btn-delete unselect weight-400"
+              <div class="col-9">{{ params['identification'][0][0].name }}</div>
+              <div class="btn-delete unselect weight-400 col-3 text-center"
                 @click="clickDelete('identification')">삭제</div>
             </div>
             <div v-else class="size-13 flex-align">
@@ -123,8 +123,8 @@
 
             <div v-if="params['bank_book'].length>0" class="flex-between size-13"
               style="color:#696969;padding:0 12px 0 28px">
-              <div>{{ params['bank_book'][0][0].name }}</div>
-              <div class="btn-delete unselect weight-400"
+              <div class="col-9">{{ params['bank_book'][0][0].name }}</div>
+              <div class="btn-delete unselect weight-400 col-3 text-center"
                 @click="clickDelete('bank_book')">삭제</div>
             </div>
             <div v-else class="size-13 flex-align">
@@ -144,8 +144,8 @@
 
             <div v-if="params['invoice'].length>0" class="flex-between size-13"
               style="color:#696969;padding:0 12px 0 28px">
-              <div>{{ params['invoice'][0][0].name }}</div>
-              <div class="btn-delete unselect weight-400"
+              <div class="col-9">{{ params['invoice'][0][0].name }}</div>
+              <div class="btn-delete unselect weight-400 col-3 text-center"
                 @click="clickDelete('invoice')">삭제</div>
             </div>
             <div v-else class="size-13 flex-align">
@@ -165,8 +165,8 @@
 
             <div v-if="params['delivery'].length>0" class="flex-between size-13"
               style="color:#696969;padding:0 12px 0 28px">
-              <div>{{ params['delivery'][0][0].name }}</div>
-              <div class="btn-delete unselect weight-400"
+              <div class="col-9">{{ params['delivery'][0][0].name }}</div>
+              <div class="btn-delete unselect weight-400 col-3 text-center"
                 @click="clickDelete('delivery')">삭제</div>
             </div>
             <div v-else class="size-13 flex-align">
@@ -186,8 +186,8 @@
 
             <div v-if="params['seller'].length>0" class="flex-between size-13"
               style="color:#696969;padding:0 12px 0 28px">
-              <div>{{ params['seller'][0][0].name }}</div>
-              <div class="btn-delete unselect weight-400"
+              <div class="col-9">{{ params['seller'][0][0].name }}</div>
+              <div class="btn-delete unselect weight-400 col-3 text-center"
                 @click="clickDelete('seller')">삭제</div>
             </div>
             <div v-else class="size-13 flex-align">
@@ -195,6 +195,30 @@
                 @change="e => onFileChange(e,'seller')">
               <label class="btn-upload unselect weight-400"
                 for="seller">파일첨부</label>
+            </div>
+        </div>
+
+        <div class="table-contents">
+          <div class="margin-bottom-10">
+            <div class="flex-align margin-bottom-4">
+              <i class="material-icons" style="margin-right:8px;font-size:18px"
+                :style="params['capture'].length>0 ? {color:'#4f76ff'} : {color:'#dddddd'} ">check</i>
+              <div class="size-14 weight-400" style="margin-right:12px">거래금액을 입증할 서류 및 인터넷화면캡쳐</div>
+            </div>
+            <div class="size-13 weight-400" style="color:#9e9e9e;margin-left:24px">구매 영수증 및 구매확인 화면캡쳐</div>
+          </div>
+
+            <div v-if="params['capture'].length>0" class="flex-between size-13"
+              style="color:#696969;padding:0 12px 0 28px">
+              <div class="col-9">{{ params['capture'][0][0].name }}</div>
+              <div class="btn-delete unselect weight-400 col-3 text-center"
+                @click="clickDelete('capture')">삭제</div>
+            </div>
+            <div v-else class="size-13 flex-align">
+              <input type="file" id="capture" class="input-hidden"
+                @change="e => onFileChange(e,'capture')">
+              <label class="btn-upload unselect weight-400"
+                for="capture">파일첨부</label>
             </div>
         </div>
 
@@ -209,13 +233,14 @@
       <div class="size-14" style="border-top:1px solid #696969">
         <div class="table-contents">
           <div class="margin-bottom-10">
-            <div class="size-14 weight-400">1. 파손시</div>
+            <div class="size-14 weight-400 margin-bottom-4">1. 파손시</div>
+            <div class="size-13 weight-400" style="color:#bbbbbb">파손물품사진 / 수리비내역서 (파손품 수리시) / 화물수령확인서 (수리불가로 전손시)</div>
           </div>
 
             <div v-if="params['damage'].length>0" class="flex-between size-13"
               style="color:#696969;padding:0 12px 0 28px">
-              <div>{{ params['damage'][0][0].name }}</div>
-              <div class="btn-delete unselect weight-400"
+              <div class="col-9">{{ params['damage'][0][0].name }}</div>
+              <div class="btn-delete unselect weight-400 col-3 text-center"
                 @click="clickDelete('damage')">삭제</div>
             </div>
             <div v-else class="size-13 flex-align">
@@ -235,8 +260,8 @@
 
             <div v-if="params['misdelivery'].length>0" class="flex-between size-13"
               style="color:#696969;padding:0 12px 0 28px">
-              <div>{{ params['misdelivery'][0][0].name }}</div>
-              <div class="btn-delete unselect weight-400"
+              <div class="col-9">{{ params['misdelivery'][0][0].name }}</div>
+              <div class="btn-delete unselect weight-400 col-3 text-center"
                 @click="clickDelete('misdelivery')">삭제</div>
             </div>
             <div v-else class="size-13 flex-align">
@@ -256,8 +281,8 @@
 
             <div v-if="params['theft'].length>0" class="flex-between size-13"
               style="color:#696969;padding:0 12px 0 28px">
-              <div>{{ params['theft'][0][0].name }}</div>
-              <div class="btn-delete unselect weight-400"
+              <div class="col-9">{{ params['theft'][0][0].name }}</div>
+              <div class="btn-delete unselect weight-400 col-3 text-center"
                 @click="clickDelete('theft')">삭제</div>
             </div>
             <div v-else class="size-13 flex-align">
@@ -283,8 +308,8 @@
 
             <div v-if="params['lost'].length>0" class="flex-between size-13"
               style="color:#696969;padding:0 12px 0 28px">
-              <div>{{ params['lost'][0][0].name }}</div>
-              <div class="btn-delete unselect weight-400"
+              <div class="col-9">{{ params['lost'][0][0].name }}</div>
+              <div class="btn-delete unselect weight-400 col-3 text-center"
                 @click="clickDelete('lost')">삭제</div>
             </div>
             <div v-else class="size-13 flex-align">
@@ -310,8 +335,8 @@
 
             <div v-if="params['return'].length>0" class="flex-between size-13"
               style="color:#696969;padding:0 12px 0 28px">
-              <div>{{ params['return'][0][0].name }}</div>
-              <div class="btn-delete unselect weight-400"
+              <div class="col-9">{{ params['return'][0][0].name }}</div>
+              <div class="btn-delete unselect weight-400 col-3 text-center"
                 @click="clickDelete('return')">삭제</div>
             </div>
             <div v-else class="size-13 flex-align">
@@ -558,9 +583,10 @@ export default {
         return: [],
         privacy: [],
         send_back: [],
-        accident: []
+        accident: [],
+        capture: []
       },
-      commonList: ['privacy', 'identification', 'bank_book', 'invoice', 'delivery', 'seller'],
+      commonList: ['privacy', 'identification', 'bank_book', 'invoice', 'delivery', 'seller', 'capture'],
       acciList: ['damage', 'misdelivery', 'theft', 'lost', 'return'],
       selectedAcci: undefined
     }

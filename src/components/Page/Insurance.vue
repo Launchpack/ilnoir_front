@@ -121,6 +121,8 @@ export default {
         if(res.status===200) {
           if(res.data.docs.length>0) {
             this.list = res.data.docs;
+
+            // this.list[0].status = 4;
           }
         }
       })
