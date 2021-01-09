@@ -117,10 +117,10 @@ export default {
       return insurance_product;
     },
     getData() {
-      this.$axios.get(`/api/user/${this.$route.query.id}/order`).then(res => {
+      this.$axios.get(`/user/${this.$route.query.id}/order`).then(res => {
         if(res.status===200) {
-          if(res.data.docs.length>0) {
-            this.list = res.data.docs;
+          if(res.data.data.length>0) {
+            this.list = res.data.data;
 
             // this.list[0].status = 4;
           }
@@ -163,7 +163,7 @@ export default {
       this.modalState = true;
     },
     clickRequest() {
-      this.routerPush(`insurance_request?id=${this.selectedItem._id}&user=${this.selectedItem.user._id}`);
+      this.routerPush(`insurance_request?id=${this.selectedItem.id}&user=${this.selectedItem.user.id}`);
     },
     clickModal() {
       this.modalState = false;

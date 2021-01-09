@@ -579,7 +579,7 @@ export default {
       return insurance_product;
     },
     getData() {
-      this.$axios.get(`/api/user/${this.$route.query.user}/order/${this.$route.query.id}`).then(res => {
+      this.$axios.get(`/user/${this.$route.query.user}/order/${this.$route.query.id}`).then(res => {
         if(res.status===200) {
           this.detail = res.data;
         }
@@ -692,12 +692,12 @@ export default {
 
       let formData = new FormData();
       let headers = { 'Content-Type': 'multipart/form-data' }
-      // param.order_id = this.detail._id;
-      formData.append('order_id', this.detail._id);
+      // param.order_id = this.detail.id;
+      formData.append('order_id', this.detail.id);
       this.addFormData(formData, param);
       console.log('formdata',formData,'param',param)
-      // params.order_id = this.detail._id;
-      this.$axios.post(`/api/user/claim`, formData, headers).then(res => {
+      // params.order_id = this.detail.id;
+      this.$axios.post(`/user/claim`, formData, headers).then(res => {
         console.log('res',res)
         if(res.status===200) {
           this.routerPush('request_done')
