@@ -6,7 +6,7 @@
     <div class="flex-between margin-bottom-16" style="color:#212121">
       <div class="size-15 bold" style="color:#4f76ff">가입 내용</div>
       <div class="position-relative">
-        <div class="flex-align unselect size-14" style="color:#484848"  
+        <div class="flex-align unselect size-14" style="color:#484848"
           @click.stop.prevent="clickName">
           <div><span class="weight-500">{{ detail.user.name }}</span>님</div>
           <i class="material-icons">arrow_drop_down</i>
@@ -16,13 +16,13 @@
           v-click-outside="clickOut">
             <div class="flex-align margin-bottom-10">
               <div class="name-btn text-center size-12"
-                style="margin-right:8px">이름</div> 
+                style="margin-right:8px">이름</div>
               <div class="size-14" style="color:#484848">{{ detail.user.name }}</div>
             </div>
 
             <div class="flex-align margin-bottom-16">
               <div class="name-btn text-center size-12"
-                style="margin-right:8px">휴대폰번호</div> 
+                style="margin-right:8px">휴대폰번호</div>
               <div class="size-14" style="color:#484848">{{ detail.user.phone }}</div>
             </div>
 
@@ -32,9 +32,9 @@
       </div>
     </div>
 
-      <div class="size-14 weight-400 margin-bottom-24" 
+      <div class="size-14 weight-400 margin-bottom-24"
         style="color:#212121;border-top:1px solid #696969">
-        
+
         <div class="flex-align list-content">
           <div class="col-5" style="color:#7e7e7e;padding:0 8px">보험상품</div>
           <div class="col-7" style="padding:0 8px">{{ insuranceProductName(detail.total_product_price) }}</div>
@@ -96,8 +96,8 @@
           <div class="flex-align margin-bottom-10">
             <i class="material-icons" style="margin-right:8px;font-size:18px"
               :style="params['identification'].length>0 ? {color:'#4f76ff'} : {color:'#dddddd'} ">check</i>
-            <div class="size-14 weight-400" style="margin-right:12px">신분증 사본</div>
-            <div class="size-13 weight-400" style="color:#9e9e9e">사업자인 경우 사업자등록증 사본</div>
+            <div class="size-14 weight-400" style="margin-right:12px">거래금액을 입증할 서류 및 인터넷화면캡쳐</div>
+            <div class="size-13 weight-400" style="color:#9e9e9e">구매 영수증 및 구매확인 화면캡쳐</div>
           </div>
 
             <div v-if="params['identification'].length>0" class="flex-between size-13"
@@ -198,7 +198,7 @@
             </div>
         </div>
 
-        <div class="table-contents">
+        <!--<div class="table-contents">
           <div class="margin-bottom-10">
             <div class="flex-align margin-bottom-4">
               <i class="material-icons" style="margin-right:8px;font-size:18px"
@@ -220,8 +220,7 @@
               <label class="btn-upload unselect weight-400"
                 for="capture">파일첨부</label>
             </div>
-        </div>
-
+        </div>-->
       </div>
     </div>
 
@@ -229,7 +228,7 @@
       <div class="margin-bottom-16">
         <div class="size-14 bold margin-bottom-4" style="color:#4f76ff;">사고 유형별 구비서류</div>
         <div class="size-14 weight-500" style="color:#696969">아래 사고 유형 중 한가지를 선택하여 입력해 주세요.</div>
-       </div> 
+       </div>
       <div class="size-14" style="border-top:1px solid #696969">
         <div class="table-contents">
           <div class="margin-bottom-10">
@@ -293,7 +292,7 @@
                 v-if="acciState('theft')">파일첨부</label>
               <a class="btn-download unselect weight-400"
                 v-if="acciState('theft')"
-                href="https://ilnoir.s3.ap-northeast-2.amazonaws.com/claim/static/form/theft.pdf" 
+                href="https://ilnoir.s3.ap-northeast-2.amazonaws.com/claim/static/form/theft.pdf"
                 download
                 target="_black"
                 @click="clickDown('theft')">양식 다운로드</a>
@@ -320,7 +319,7 @@
                 v-if="acciState('lost')">파일첨부</label>
               <a class="btn-download unselect weight-400"
                 v-if="acciState('lost')"
-                href="https://ilnoir.s3.ap-northeast-2.amazonaws.com/claim/static/form/lost.pdf" 
+                href="https://ilnoir.s3.ap-northeast-2.amazonaws.com/claim/static/form/lost.pdf"
                 download
                 target="_black"
                 @click="clickDown('lost')">양식 다운로드</a>
@@ -354,7 +353,7 @@
     <div style="margin-bottom:40px">
       <div class="flex-align margin-bottom-16">
         <div class="size-14 bold" style="color:#4f76ff;margin-right:20px">개인 정보 제공 동의</div>
-       </div> 
+       </div>
       <div class="size-15" style="border-top:1px solid #696969">
         <div class="table-privacy flex-between">
           <div class="flex-align unselect" @click="clickAgree">
@@ -366,7 +365,7 @@
 
         <div class="table-privacy flex-between">
           <div class="flex-align unselect" @click="clickDrop">
-            <i class="material-icons" 
+            <i class="material-icons"
               style="margin-right:6px;color:#4f76ff;font-size:15px">{{ dropState ? 'remove' : 'add'}}</i>
             <div class="size-14 weight-400" style="margin-right:16px">개인 정보 수집·이용에 관한 동의사항</div>
           </div>
@@ -583,10 +582,9 @@ export default {
         return: [],
         privacy: [],
         send_back: [],
-        accident: [],
-        capture: []
+        accident: []
       },
-      commonList: ['privacy', 'identification', 'bank_book', 'invoice', 'delivery', 'seller', 'capture'],
+      commonList: ['privacy', 'identification', 'bank_book', 'invoice', 'delivery', 'seller'],
       acciList: ['damage', 'misdelivery', 'theft', 'lost', 'return'],
       selectedAcci: undefined
     }
@@ -713,7 +711,7 @@ export default {
       if(accident.indexOf(true)===-1) {
         this.acciInvalid = true;
       }
-      
+
       if(this.commonInvalid | this.acciInvalid | this.privacyInvalid) return;
 
       let formData = new FormData();
@@ -769,8 +767,8 @@ export default {
         // xhr.responseType = 'blob';
         // xhr.onload = function () {
         //     var a = document.createElement('a');
-        //     a.href = window.URL.createObjectURL(xhr.response); 
-        //     a.download = filename; 
+        //     a.href = window.URL.createObjectURL(xhr.response);
+        //     a.download = filename;
         //     a.style.display = 'none';
         //     document.body.appendChild(a);
         //     a.click();
