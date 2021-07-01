@@ -2,7 +2,7 @@
 <div class="flex-justify">
   <div class="flex" v-if="pagingData" :style="containerStyle">
 
-    <div class="flex-center" 
+    <div class="flex-center"
       :style="arrowLeftEndStyle"
       @click="clickLeftEnd" v-if="arrowEnd === true">
       <i class="material-icons">double_arrow</i>
@@ -13,7 +13,7 @@
       <i class="material-icons">keyboard_arrow_left</i>
     </div>
 
-    <div v-for="(item,idx) in paging" :key="'key-'+idx" 
+    <div v-for="(item,idx) in paging" :key="'key-'+idx"
       :style="pagingData.cur_page==item ? selectedNumStyle : numStyle"
       @click="clickNum(item)" class="unselect">
       {{ item }}
@@ -68,7 +68,7 @@ export default {
   created() {
     this.getPaging();
   },
-  
+
   methods: {
     getPaging() {
       // 현재 페이지네이션 중에서 맨 첫번째 시작 넘버 계산
@@ -88,21 +88,21 @@ export default {
       if (this.endPage >= this.pagingData.total_page) {
         this.endPage = this.pagingData.total_page;
       }
-      
+
       if (Number(this.pagingData.cur_page) === 1) {
         this.arrLeft = false;
       }
       else {
         this.arrLeft = true;
       }
-      
+
       if (Number(this.pagingData.cur_page) === this.pagingData.total_page) {
         this.arrRight = false;
       }
       else {
         this.arrRight = true;
       }
-      
+
       this.paging = [];
       for(let i=this.startPage;i<=this.endPage; i++) {
         this.paging.push(i)
@@ -123,7 +123,7 @@ export default {
       else {
         this.pagingData.cur_page = this.endPage + 1;
       }
-      
+
       this.$emit('curPaginationNum', this.pagingData.cur_page);
       this.getPaging();
     },

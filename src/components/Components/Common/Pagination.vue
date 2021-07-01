@@ -1,192 +1,166 @@
 <template>
-<div class="flex-justify" v-if="pagingData" :style="containerStyle">
-  <div class="flex-center unselect" :style="arrowLeftEndStyle"
-    @click="clickLeftEnd" v-if="arrLeft===true && arrowEnd === true">
-    <i class="material-icons">double_arrow</i>
+  <!-- 페이지 -->
+  <div class="pagination-group">
+    <div class="pagination-btn-prev" @click="startPage">
+      <i class="material-icons unselect" style="margin-top:3px;margin-right:-18px">keyboard_arrow_left</i>
+      <i class="material-icons unselect" style="margin-top:3px">keyboard_arrow_left</i>
+    </div>
+    <div class="pagination-btn-prev" @click="prevPage">
+      <i class="material-icons unselect" style="margin-top:3px">keyboard_arrow_left</i>
+    </div>
+    <div class="pagination-num" v-for="(n,idx) in calcPageList" :key="'page-'+idx">
+        <span
+            class="unselect"
+            :class="{
+            'pagination-num-selected': n === filtered.page,
+            'pagination-num-not-selected': n !== filtered.page,
+          }"
+            @click="changePage(n)"
+            style="font-size:1.2rem">{{ n }}</span>
+    </div>
+    <div class="pagination-btn-next" @click="nextPage">
+      <i class="material-icons unselect" style="margin-top:3px">keyboard_arrow_right</i>
+    </div>
+    <div class="pagination-btn-next" @click="endPage">
+      <i class="material-icons unselect" style="margin-top:3px">keyboard_arrow_right</i>
+      <i class="material-icons unselect" style="margin-top:3px;margin-left:-18px">keyboard_arrow_right</i>
+    </div>
   </div>
-
-  <div class="flex-center unselect" :style="arrowLeftStyle"
-    @click="clickLeft" v-if="arrLeft===true">
-    <i class="material-icons">keyboard_arrow_left</i>
-  </div>
-
-  <div v-for="(item,idx) in paging" :key="'key-'+idx" 
-    :style="pagingData.cur_page==item ? selectedNumStyle : numStyle"
-    @click="clickNum(item)" class="unselect">
-    {{ item }}
-  </div>
-
-  <div class="flex-center unselect" :style="arrowRightStyle"
-    @click="clickRight" v-if="arrRight===true">
-    <i class="material-icons">keyboard_arrow_right</i>
-  </div>
-
-  <div class="flex-center unselect" :style="arrowRightEndStyle"
-    @click="clickRightEnd" v-if="arrRight===true && arrowEnd === true">
-    <i class="material-icons">double_arrow</i>
-  </div>
-</div>
 </template>
 
 <script>
-export default {
-  name: "Pagination",
-  props: {
-    pageNum: {
-      type: Number,
-      required: true
-    },
-    pagingData: {
-      type: Object,
-      required: true
-    },
-    arrowEnd: {
-      type: Boolean,
-      required: false
-    }
-  },
-  data() {
-    return {
-      startPage: 1,
-      endPage: undefined,
-      paging: [],
-      arrLeft: false,
-      arrRight: false,
-    }
-  },
-  created() {
-    this.getPaging();
-  },
-  watch: {
-    'pagingData.total_page'() {
-      this.getPaging();
-    }
-  },
-  methods: {
-    getPaging() {
-      // 현재 페이지네이션 중에서 맨 첫번째 시작 넘버 계산
-      this.startPage = parseInt((this.pagingData.cur_page-1) / this.pageNum) * this.pageNum + 1
-      // 현재 페이지네이션 중에서 맨 마지막 넘버 계산
-      this.endPage = this.startPage + this.pageNum -1
-
-      if (this.pageNum<this.pagingData.total_page) {
-        this.arrLeft = true;
-      }
-      else this.arrLeft = false;
-
-      if (this.pageNum < this.pagingData.total_page) {
-        this.arrRight = true;
-      }
-
-      if (this.endPage >= this.pagingData.total_page) {
-        this.endPage = this.pagingData.total_page;
-        this.arrRight = false;
-      }
-      
-      this.paging = [];
-      for(let i=this.startPage;i<=this.endPage; i++) {
-        this.paging.push(i)
+  export default {
+    props: {
+      filtered: {
+        type: Object,
+        required: true
       }
     },
-    clickNum(item) {
-      this.$emit('curPaginationNum', item);
-      this.pagingData.cur_page = item;
-    },
-    clickRight() {
-      this.pagingData.cur_page = this.endPage + 1;
-      this.$emit('curPaginationNum', this.pagingData.cur_page);
-      this.getPaging();
-    },
-    clickLeft() {
-      if (this.startPage===1) {
-        this.pagingData.cur_page = 1
-      }
-      else this.pagingData.cur_page = this.startPage - 1;
-      this.$emit('curPaginationNum', this.pagingData.cur_page);
-      this.getPaging();
-    },
-    clickLeftEnd() {
-      this.pagingData.cur_page = 1;
-      this.$emit('curPaginationNum', this.pagingData.cur_page);
-      this.getPaging();
-    },
-    clickRightEnd() {
-      this.pagingData.cur_page = this.pagingData.total_page;
-      this.$emit('curPaginationNum', this.pagingData.cur_page);
-      this.getPaging();
-    }
-  },
-  computed: {
-    containerStyle() {
-      let deco = {};
-      if(this.$store.getters.device==='pc') {
-        deco.marginTop = '60px'
-      }
-      if(this.$store.getters.device==='mobile') {
-        deco.marginTop = '32px'
-      }
-      return deco;
-    },
-    numStyle() {
+    name: "Pagination",
+    data () {
       return {
-        width: '40px',
-        height: '40px',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center'
+        limit:10,
+        block: 1,
+        start: 1,
+        end: 1,
       }
     },
-    selectedNumStyle() {
-      return {
-        width: '40px',
-        height: '40px',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        border: `1px solid ${this.getColor('보조 테두리선 색상')}`
+    watch: {
+      filtered: {
+        handler() {
+          if(this.filtered.page===1) {
+            this.start = 1;
+            this.block = 1;
+          }
+          if(this.start + 9 >= this.filtered.pages) {
+            this.end = this.filtered.pages;
+          }
+          else if(this.block===1) {
+            this.end = 10;
+          }
+        },
+        deep: true
       }
     },
-    arrowLeftStyle() {
-      return {
-        width: '40px',
-        height: '40px',
-        border: '1px solid #dddddd',
-        color: '#dddddd',
-        marginRight: '20px'
+    computed: {
+      calcPageList() {
+        let page_list = [];
+        for(let i=this.start; i<=this.end; i++) {
+          page_list.push(i);
+        }
+        return page_list;
       }
     },
-    arrowRightStyle() {
-      return {
-        width: '40px',
-        height: '40px',
-        border: '1px solid #dddddd',
-        color: '#dddddd',
-        marginLeft: '20px'
-      }
-    },
-    arrowLeftEndStyle() {
-      return {
-        width: '40px',
-        height: '40px',
-        border: '1px solid #dddddd',
-        color: '#dddddd',
-        marginRight: '8px',
-        transform: 'rotate(180deg)',
-      }
-    },
-    arrowRightEndStyle() {
-      return {
-        width: '40px',
-        height: '40px',
-        border: '1px solid #dddddd',
-        color: '#dddddd',
-        marginLeft: '8px',
-      }
+    methods: {
+      changePage(num) {
+        this.filtered.page = num;
+        this.check = false;
+        this.$emit('getData');
+      },
+      prevPage() {
+        if (this.filtered.page - 10 >= 1) {
+          this.block -= 1;
+          this.start = (this.block-1)*10+1;
+          this.end = this.start + 9;
+          this.filtered.page = this.start;
+          this.$emit('getData');
+        }
+      },
+      nextPage() {
+        if (this.filtered.page + 10 <= this.filtered.pages) {
+          this.block += 1;
+          this.start = (this.block-1)*10+1;
+          if(this.start + 9 >= this.filtered.pages) {
+            this.end = this.filtered.pages;
+          }
+          else {
+            this.end = this.start + 9;
+          }
+          this.filtered.page = this.start;
+          this.$emit('getData');
+        }
+        else {
+          let next_block = this.block+1;
+          if ((next_block - 1) * 10 + 1 <= this.filtered.pages) {
+            this.block += 1;
+            this.start = (this.block - 1) * 10 + 1;
+            this.end = this.filtered.pages;
+            this.filtered.page = this.start;
+            this.$emit('getData');
+          }
+        }
+      },
+      startPage() {
+        this.block = 1;
+        this.start = (this.block-1)*10+1;
+        if (this.filtered.pages>10) this.end = this.start + 9;
+        else this.end = this.filtered.pages;
+        this.filtered.page = 1;
+        this.$emit('getData');
+      },
+      endPage() {
+        let block = Math.floor(this.filtered.pages/10);
+        let remainder = this.filtered.pages % 10;
+        if(remainder > 0) block += 1;
+        this.block = block;
+        this.start = (this.block-1)*10+1;
+        this.end = this.filtered.pages;
+        this.filtered.page = this.filtered.pages;
+        this.$emit('getData');
+      },
     }
   }
-}
 </script>
 
-<style scoped>
+<style lang="stylus" scoped>
+  .pagination-group
+    display flex
+    flex-wrap wrap
+    justify-content center
+    align-items center
+    margin-top 20px
 
+  .pagination-btn-prev
+  .pagination-btn-next
+    display inline-block
+
+  .pagination-num
+    display inline-block
+
+  .pagination-btn-prev i
+  .pagination-btn-next i
+    color #18a4ed
+    margin 4px
+    cursor pointer
+
+  .pagination-num
+    padding 5px 8px
+    cursor pointer
+    font-size .9rem
+
+  .pagination-num-selected
+    color #18a4ed
+
+  .pagination-num-not-selected
+    color #666
 </style>
