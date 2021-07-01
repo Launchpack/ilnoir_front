@@ -48,16 +48,7 @@
     watch: {
       filtered: {
         handler() {
-          if(this.filtered.page===1) {
-            this.start = 1;
-            this.block = 1;
-          }
-          if(this.start + 9 >= this.filtered.pages) {
-            this.end = this.filtered.pages;
-          }
-          else if(this.block===1) {
-            this.end = 10;
-          }
+          this.init();
         },
         deep: true
       }
@@ -71,7 +62,22 @@
         return page_list;
       }
     },
+    created() {
+      this.init();
+    },
     methods: {
+      init() {
+        if(this.filtered.page===1) {
+          this.start = 1;
+          this.block = 1;
+        }
+        if(this.start + 9 >= this.filtered.pages) {
+          this.end = this.filtered.pages;
+        }
+        else if(this.block===1) {
+          this.end = 10;
+        }
+      },
       changePage(num) {
         this.filtered.page = num;
         this.check = false;
