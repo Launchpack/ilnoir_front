@@ -20,7 +20,6 @@ export default {
                     path: 'insurance_request',
                     component: () => import('../components/PagePc/InsuranceRequest.vue'),
                 },
-,
                 {
                     path: 'wrong_grade',
                     component: () => import ('../components/Pages/WrongGrade')
