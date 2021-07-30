@@ -13,11 +13,12 @@
       </div>
 
       <div class="list-title flex-align text-center size-15 weight-400" style="color:#212121">
+        <div class="col-1">주문번호</div>
         <div class="col-2">보험상품명</div>
         <div class="col-1">피보험자명</div>
         <div class="col-2">보험증권번호</div>
         <div class="col-1">보험개시일</div>
-        <div class="col-2">보험가입금액</div>
+        <div class="col-1">보험가입금액</div>
         <div class="col-2">가입 보험 현황</div>
         <div class="col-2">보험금 청구</div>
       </div>
@@ -25,11 +26,12 @@
       <div v-for="(item,idx) in list" :key="'key-'+idx">
         <div class="list-content flex-align text-center size-14 weight-400" style="color:#212121"
              :style="[item.status===5 ? {color: '#aaaaaa'} : {color: '#212121'}]">
+          <div class="col-1">{{ item.order_number }}</div>
           <div class="col-2">{{ insuranceProductName(item.total_product_price) }}</div>
           <div class="col-1">{{ item.user.name }}</div>
           <div class="col-2">{{ item.stock_number }}</div>
           <div class="col-1">{{ computedDate(item) }}</div>
-          <div class="col-2">{{ item.total_product_price | currency }}</div>
+          <div class="col-1">{{ item.total_product_price | currency }}</div>
           <div class="col-2">{{ statusKor(item) }}</div>
           <div class="col-2 flex-justify" v-if="item.status===4">
             <div class="btn-request size-14 unselect text-center weight-400"
