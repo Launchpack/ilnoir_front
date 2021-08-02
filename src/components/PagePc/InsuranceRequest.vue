@@ -46,7 +46,7 @@
             </div>
             <div v-else class="size-13 flex-align">
               <a class="btn-download unselect weight-400"
-                href="https://ilnoir.s3.ap-northeast-2.amazonaws.com/claim/static/form/privacy.pdf"
+                href="https://ilnoir.s3.ap-northeast-2.amazonaws.com/claim/static/form/privacy.docx"
                 download
                 target="_blank"
                 @click="clickDown('privacy')">양식 다운로드</a>
@@ -255,7 +255,7 @@
                 v-if="acciState('theft')"
                 href="https://ilnoir.s3.ap-northeast-2.amazonaws.com/claim/static/form/theft.pdf"
                 download
-                target="_black"
+                target="_blank"
                 @click="clickDown('theft')">양식 다운로드</a>
               <input type="file" id="theft" class="input-hidden"
                 @change="e => onFileChange(e,'theft')">
@@ -283,7 +283,7 @@
                 v-if="acciState('lost')"
                 href="https://ilnoir.s3.ap-northeast-2.amazonaws.com/claim/static/form/lost.pdf"
                 download
-                target="_black"
+                target="_blank"
                 @click="clickDown('lost')">양식 다운로드</a>
               <input type="file" id="lost" class="input-hidden"
                 @change="e => onFileChange(e,'lost')">
