@@ -1,17 +1,19 @@
 <template>
   <div class="flex-center" style="background-color:#f8f8f8">
     <div style="width:440px">
-      <div class="size-26 text-center weight-500 margin-bottom-12" 
+      <div class="size-26 text-center weight-500 margin-bottom-12"
         style="color:#212121">가입 보험 조회</div>
-      <div class="size-15 text-center" style="color:#515151">보험 가입 및 주문 시 기재한 이름과 휴대전화번호를 입력 해 주세요.</div>
+      <div class="size-15 text-center" style="color:#515151">보험 가입 및 주문 시 기재한 이용자 성함과 신청서번호를 입력하세요.</div>
 
       <div style="padding:20px 8px 60px">
-        <c-input-text placeholder="이름" :inputCustomStyle="inputCustomStyle"
+        <c-input-text placeholder="이용자 성함" :inputCustomStyle="inputCustomStyle"
           @update:value="updateName"></c-input-text>
-        <c-input-text placeholder="휴대전화번호" :inputCustomStyle="inputCustomStyle"
+        <c-input-text placeholder="신청서번호" :inputCustomStyle="inputCustomStyle"
+                      @update:value="updatePhone"></c-input-text>
+        <!--<c-input-text placeholder="휴대전화번호" :inputCustomStyle="inputCustomStyle"
           @update:value="updatePhone"
-          @onEnter="clickRequest"></c-input-text>
-        <div v-if="noneState" class="size-12 weight-500" 
+          @onEnter="clickRequest"></c-input-text>-->
+        <div v-if="noneState" class="size-12 weight-500"
           style="color:#d92424;margin-top:10px">
           *가입된 정보가 없습니다. 입력하신 내용을 다시 확인해주세요.
         </div>
@@ -45,7 +47,8 @@ export default {
       },
       info: {
         name: '',
-        phone: ''
+        phone: '',
+        order_number: ''
       },
       noneState: false
     }
@@ -55,41 +58,18 @@ export default {
       this.info.name = val;
     },
     updatePhone(val) {
-      this.info.phone = val;
+      this.info.order_number = val;
     },
     clickRequest() {
-      if(this.info.name.length===0 || this.info.phone.length===0) {
+      if(this.info.name.length===0 || this.info.order_number.length===0) {
         this.toast('정보를 모두 입력해주세요.');
         return;
       }
-      let num = this.info.phone;
-      let params = {
-        name: '',
-        phone: ''
-      };
-      params.name = this.info.name;
-      if(num.indexOf('-') > -1) {
-        params.phone = this.info.phone;
-      }
-      else {
-        if(this.info.phone.length===11) {
-          params.phone = num.slice(0,3) + '-' + num.slice(3,7) + '-' + num.slice(7);
-        }
-        else if(this.info.phone.length===10) {
-          params.phone = num.slice(0,3) + '-' + num.slice(3,6) + '-' + num.slice(6);
-        }
-        else {
-          this.toast('유효한 휴대전화번호를 입력해주세요.')
-          return;
-        }
-      }
 
-      console.log('params',params)
-      
-      this.$axios.post('/api/user/sign/select', params).then(res => {
+      this.$axios.post('/api/user/sign/select', this.info).then(res => {
         console.log(res)
         if(res.status===200) {
-          this.routerPush(`insurance?id=${res.data.user_id}`);
+          this.routerPush(`insurance?id=${res.data.order_id}`);
         }
       }).catch(err => {
         console.log(err);

@@ -98,7 +98,7 @@
         return insurance_product;
       },
       getData() {
-        this.$axios.get(`/api/user/${this.$route.query.id}/order`, {
+        this.$axios.get(`/api/user/order/${this.$route.query.id}`, {
           params: this.filtered
         }).then(res => {
           if (res.status === 200) {
