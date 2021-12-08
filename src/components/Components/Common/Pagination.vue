@@ -67,51 +67,51 @@
     },
     methods: {
       init() {
-        if(this.filtered.page===1) {
+        if(this.filtered.page_num===1) {
           this.start = 1;
           this.block = 1;
         }
-        if(this.start + 9 >= this.filtered.pages) {
-          this.end = this.filtered.pages;
+        if(this.start + 9 >= this.filtered.total_page) {
+          this.end = this.filtered.total_page;
         }
         else if(this.block===1) {
           this.end = 10;
         }
       },
       changePage(num) {
-        this.filtered.page = num;
+        this.filtered.page_num = num;
         this.check = false;
         this.$emit('getData');
       },
       prevPage() {
-        if (this.filtered.page - 10 >= 1) {
+        if (this.filtered.page_num - 10 >= 1) {
           this.block -= 1;
           this.start = (this.block-1)*10+1;
           this.end = this.start + 9;
-          this.filtered.page = this.start;
+          this.filtered.page_num = this.start;
           this.$emit('getData');
         }
       },
       nextPage() {
-        if (this.filtered.page + 10 <= this.filtered.pages) {
+        if (this.filtered.page_num + 10 <= this.filtered.total_page) {
           this.block += 1;
           this.start = (this.block-1)*10+1;
-          if(this.start + 9 >= this.filtered.pages) {
-            this.end = this.filtered.pages;
+          if(this.start + 9 >= this.filtered.total_page) {
+            this.end = this.filtered.total_page;
           }
           else {
             this.end = this.start + 9;
           }
-          this.filtered.page = this.start;
+          this.filtered.page_num = this.start;
           this.$emit('getData');
         }
         else {
           let next_block = this.block+1;
-          if ((next_block - 1) * 10 + 1 <= this.filtered.pages) {
+          if ((next_block - 1) * 10 + 1 <= this.filtered.total_page) {
             this.block += 1;
             this.start = (this.block - 1) * 10 + 1;
-            this.end = this.filtered.pages;
-            this.filtered.page = this.start;
+            this.end = this.filtered.total_page;
+            this.filtered.page_num = this.start;
             this.$emit('getData');
           }
         }
@@ -119,19 +119,19 @@
       startPage() {
         this.block = 1;
         this.start = (this.block-1)*10+1;
-        if (this.filtered.pages>10) this.end = this.start + 9;
-        else this.end = this.filtered.pages;
-        this.filtered.page = 1;
+        if (this.filtered.total_page>10) this.end = this.start + 9;
+        else this.end = this.filtered.total_page;
+        this.filtered.page_num = 1;
         this.$emit('getData');
       },
       endPage() {
-        let block = Math.floor(this.filtered.pages/10);
-        let remainder = this.filtered.pages % 10;
+        let block = Math.floor(this.filtered.total_page/10);
+        let remainder = this.filtered.total_page % 10;
         if(remainder > 0) block += 1;
         this.block = block;
         this.start = (this.block-1)*10+1;
-        this.end = this.filtered.pages;
-        this.filtered.page = this.filtered.pages;
+        this.end = this.filtered.total_page;
+        this.filtered.page_num = this.filtered.total_page;
         this.$emit('getData');
       },
     }
