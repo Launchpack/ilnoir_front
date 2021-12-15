@@ -81,9 +81,9 @@
     },
     created() {
       this.filtered = {
-        page: 1,
-        pages:1,
-        limit: 10
+        cur_page: 1,
+        total_page:1,
+        page_length: 10
       };
       this.getData();
     },
@@ -98,15 +98,15 @@
         return insurance_product;
       },
       getData() {
-        this.$axios.get(`/api/user/order/${this.$route.query.id}`, {
+        this.$axios.get(`/user/order/${this.$route.query.id}`, {
           params: this.filtered
         }).then(res => {
           if (res.status === 200) {
-            if (res.data.docs.length > 0) {
-              this.list = res.data.docs;
-              this.filtered.limit = res.data.limit;
-              this.filtered.pages = res.data.pages;
-              this.filtered.page = res.data.page;
+            if (res.data.data.length > 0) {
+              this.list = res.data.data;
+              this.filtered.page_length = res.data.page_length;
+              this.filtered.total_page = res.data.total_page;
+              this.filtered.cur_page = res.data.cur_page;
             }
           }
         })
@@ -140,7 +140,7 @@
         this.modalState = true;
       },
       clickRequest() {
-        this.routerPush(`insurance_request?id=${this.selectedItem._id}&user=${this.selectedItem.user._id}`);
+        this.routerPush(`insurance_request?id=${this.selectedItem.id}&user=${this.selectedItem.user.id}`);
       },
       clickModal() {
         this.modalState = false;

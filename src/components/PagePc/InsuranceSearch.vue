@@ -66,7 +66,7 @@ export default {
         return;
       }
 
-      this.$axios.post('/api/user/sign/select', this.info).then(res => {
+      this.$axios.post('/user/sign/select', this.info).then(res => {
         console.log(res)
         if(res.status===200) {
           this.routerPush(`insurance?id=${res.data.order_id}`);
