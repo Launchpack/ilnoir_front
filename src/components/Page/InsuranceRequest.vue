@@ -69,13 +69,13 @@
         <div class="table-contents">
           <div class="flex-align margin-bottom-10">
             <i class="material-icons" style="margin-right:8px;font-size:18px"
-              :style="params['privacy'].length>0 ? {color:'#4f76ff'} : {color:'#dddddd'} ">check</i>
+              :style="params['privacy'] ? {color:'#4f76ff'} : {color:'#dddddd'} ">check</i>
             <div class="size-14 weight-400">보험금청구서/개인정보처리동의서</div>
           </div>
 
-            <div v-if="params['privacy'].length>0" class="flex-between size-13"
+            <div v-if="params['privacy']" class="flex-between size-13"
               style="color:#696969;padding:0 12px 0 28px">
-              <div class="col-9">{{ params['privacy'][0][0].name }}</div>
+              <div class="col-9">{{ params['privacy'].name }}</div>
               <div class="btn-delete unselect weight-400 col-3 text-center"
                 @click="clickDelete('privacy')">삭제</div>
             </div>
@@ -85,7 +85,7 @@
               <label class="btn-upload unselect weight-400" style="margin-right:12px"
                 for="privacy">파일첨부</label>
               <a class="btn-download unselect weight-400"
-                href="https://ilnoir.s3.ap-northeast-2.amazonaws.com/claim/static/form/privacy.pdf"
+                href="https://ilnoir.s3.ap-northeast-2.amazonaws.com/claim/static/form/privacy.docx"
                 download
                 target="_blank"
                 @click="clickDown('privacy')">양식 다운로드</a>
@@ -95,14 +95,14 @@
         <div class="table-contents">
           <div class="flex-align margin-bottom-10">
             <i class="material-icons" style="margin-right:8px;font-size:18px"
-              :style="params['identification'].length>0 ? {color:'#4f76ff'} : {color:'#dddddd'} ">check</i>
+              :style="params['identification'] ? {color:'#4f76ff'} : {color:'#dddddd'} ">check</i>
             <div class="size-14 weight-400" style="margin-right:12px">거래금액을 입증할 서류 및 인터넷화면캡쳐</div>
             <div class="size-13 weight-400" style="color:#9e9e9e">구매 영수증 및 구매확인 화면캡쳐</div>
           </div>
 
-            <div v-if="params['identification'].length>0" class="flex-between size-13"
+            <div v-if="params['identification']" class="flex-between size-13"
               style="color:#696969;padding:0 12px 0 28px">
-              <div class="col-9">{{ params['identification'][0][0].name }}</div>
+              <div class="col-9">{{ params['identification'].name }}</div>
               <div class="btn-delete unselect weight-400 col-3 text-center"
                 @click="clickDelete('identification')">삭제</div>
             </div>
@@ -117,13 +117,13 @@
         <div class="table-contents">
           <div class="flex-align margin-bottom-10">
             <i class="material-icons" style="margin-right:8px;font-size:18px"
-              :style="params['bank_book'].length>0 ? {color:'#4f76ff'} : {color:'#dddddd'} ">check</i>
+              :style="params['bank_book'] ? {color:'#4f76ff'} : {color:'#dddddd'} ">check</i>
             <div class="size-14 weight-400">통장사본</div>
           </div>
 
-            <div v-if="params['bank_book'].length>0" class="flex-between size-13"
+            <div v-if="params['bank_book']" class="flex-between size-13"
               style="color:#696969;padding:0 12px 0 28px">
-              <div class="col-9">{{ params['bank_book'][0][0].name }}</div>
+              <div class="col-9">{{ params['bank_book'].name }}</div>
               <div class="btn-delete unselect weight-400 col-3 text-center"
                 @click="clickDelete('bank_book')">삭제</div>
             </div>
@@ -138,13 +138,13 @@
         <div class="table-contents">
           <div class="flex-align margin-bottom-10">
             <i class="material-icons" style="margin-right:8px;font-size:18px"
-              :style="params['invoice'].length>0 ? {color:'#4f76ff'} : {color:'#dddddd'} ">check</i>
+              :style="params['invoice'] ? {color:'#4f76ff'} : {color:'#dddddd'} ">check</i>
             <div class="size-14 weight-400">운송장</div>
           </div>
 
-            <div v-if="params['invoice'].length>0" class="flex-between size-13"
+            <div v-if="params['invoice']" class="flex-between size-13"
               style="color:#696969;padding:0 12px 0 28px">
-              <div class="col-9">{{ params['invoice'][0][0].name }}</div>
+              <div class="col-9">{{ params['invoice'].name }}</div>
               <div class="btn-delete unselect weight-400 col-3 text-center"
                 @click="clickDelete('invoice')">삭제</div>
             </div>
@@ -159,13 +159,13 @@
         <div class="table-contents">
           <div class="flex-align margin-bottom-10">
             <i class="material-icons" style="margin-right:8px;font-size:18px"
-              :style="params['delivery'].length>0 ? {color:'#4f76ff'} : {color:'#dddddd'} ">check</i>
+              :style="params['delivery'] ? {color:'#4f76ff'} : {color:'#dddddd'} ">check</i>
             <div class="size-14 weight-400">택배시 배송이력화면 캡쳐</div>
           </div>
 
-            <div v-if="params['delivery'].length>0" class="flex-between size-13"
+            <div v-if="params['delivery']" class="flex-between size-13"
               style="color:#696969;padding:0 12px 0 28px">
-              <div class="col-9">{{ params['delivery'][0][0].name }}</div>
+              <div class="col-9">{{ params['delivery'].name }}</div>
               <div class="btn-delete unselect weight-400 col-3 text-center"
                 @click="clickDelete('delivery')">삭제</div>
             </div>
@@ -180,13 +180,13 @@
         <div class="table-contents">
           <div class="flex-align margin-bottom-10">
             <i class="material-icons" style="margin-right:8px;font-size:18px"
-              :style="params['seller'].length>0 ? {color:'#4f76ff'} : {color:'#dddddd'} ">check</i>
+              :style="params['seller'] ? {color:'#4f76ff'} : {color:'#dddddd'} ">check</i>
             <div class="size-14 weight-400">구매 당시 판매자가 등재한 물품사진</div>
           </div>
 
-            <div v-if="params['seller'].length>0" class="flex-between size-13"
+            <div v-if="params['seller']" class="flex-between size-13"
               style="color:#696969;padding:0 12px 0 28px">
-              <div class="col-9">{{ params['seller'][0][0].name }}</div>
+              <div class="col-9">{{ params['seller'].name }}</div>
               <div class="btn-delete unselect weight-400 col-3 text-center"
                 @click="clickDelete('seller')">삭제</div>
             </div>
@@ -202,15 +202,15 @@
           <div class="margin-bottom-10">
             <div class="flex-align margin-bottom-4">
               <i class="material-icons" style="margin-right:8px;font-size:18px"
-                :style="params['capture'].length>0 ? {color:'#4f76ff'} : {color:'#dddddd'} ">check</i>
+                :style="params['capture'] ? {color:'#4f76ff'} : {color:'#dddddd'} ">check</i>
               <div class="size-14 weight-400" style="margin-right:12px">거래금액을 입증할 서류 및 인터넷화면캡쳐</div>
             </div>
             <div class="size-13 weight-400" style="color:#9e9e9e;margin-left:24px">구매 영수증 및 구매확인 화면캡쳐</div>
           </div>
 
-            <div v-if="params['capture'].length>0" class="flex-between size-13"
+            <div v-if="params['capture']" class="flex-between size-13"
               style="color:#696969;padding:0 12px 0 28px">
-              <div class="col-9">{{ params['capture'][0][0].name }}</div>
+              <div class="col-9">{{ params['capture'].name }}</div>
               <div class="btn-delete unselect weight-400 col-3 text-center"
                 @click="clickDelete('capture')">삭제</div>
             </div>
@@ -236,9 +236,9 @@
             <div class="size-13 weight-400" style="color:#bbbbbb">파손물품사진 / 수리비내역서 (파손품 수리시) / 화물수령확인서 (수리불가로 전손시)</div>
           </div>
 
-            <div v-if="params['damage'].length>0" class="flex-between size-13"
+            <div v-if="params['damage']" class="flex-between size-13"
               style="color:#696969;padding:0 12px 0 28px">
-              <div class="col-9">{{ params['damage'][0][0].name }}</div>
+              <div class="col-9">{{ params['damage'].name }}</div>
               <div class="btn-delete unselect weight-400 col-3 text-center"
                 @click="clickDelete('damage')">삭제</div>
             </div>
@@ -257,9 +257,9 @@
             <div class="size-13 weight-400" style="color:#bbbbbb">경찰서사고접수확인서 등 판매자 사기신고서류 첨부</div>
           </div>
 
-            <div v-if="params['misdelivery'].length>0" class="flex-between size-13"
+            <div v-if="params['misdelivery']" class="flex-between size-13"
               style="color:#696969;padding:0 12px 0 28px">
-              <div class="col-9">{{ params['misdelivery'][0][0].name }}</div>
+              <div class="col-9">{{ params['misdelivery'].name }}</div>
               <div class="btn-delete unselect weight-400 col-3 text-center"
                 @click="clickDelete('misdelivery')">삭제</div>
             </div>
@@ -278,9 +278,9 @@
             <div class="size-13 weight-400" style="color:#bbbbbb">운송인(택배기사 등)이 작성한 도난확인증명서 첨부</div>
           </div>
 
-            <div v-if="params['theft'].length>0" class="flex-between size-13"
+            <div v-if="params['theft']" class="flex-between size-13"
               style="color:#696969;padding:0 12px 0 28px">
-              <div class="col-9">{{ params['theft'][0][0].name }}</div>
+              <div class="col-9">{{ params['theft'].name }}</div>
               <div class="btn-delete unselect weight-400 col-3 text-center"
                 @click="clickDelete('theft')">삭제</div>
             </div>
@@ -294,7 +294,7 @@
                 v-if="acciState('theft')"
                 href="https://ilnoir.s3.ap-northeast-2.amazonaws.com/claim/static/form/theft.pdf"
                 download
-                target="_black"
+                target="_blank"
                 @click="clickDown('theft')">양식 다운로드</a>
             </div>
         </div>
@@ -305,9 +305,9 @@
             <div class="size-13 weight-400" style="color:#bbbbbb">운송인(택배기사 등)이 작성한 분실확인증명서 첨부</div>
           </div>
 
-            <div v-if="params['lost'].length>0" class="flex-between size-13"
+            <div v-if="params['lost']" class="flex-between size-13"
               style="color:#696969;padding:0 12px 0 28px">
-              <div class="col-9">{{ params['lost'][0][0].name }}</div>
+              <div class="col-9">{{ params['lost'].name }}</div>
               <div class="btn-delete unselect weight-400 col-3 text-center"
                 @click="clickDelete('lost')">삭제</div>
             </div>
@@ -321,7 +321,7 @@
                 v-if="acciState('lost')"
                 href="https://ilnoir.s3.ap-northeast-2.amazonaws.com/claim/static/form/lost.pdf"
                 download
-                target="_black"
+                target="_blank"
                 @click="clickDown('lost')">양식 다운로드</a>
             </div>
         </div>
@@ -332,9 +332,9 @@
             <div class="size-13 weight-400" style="color:#bbbbbb">반품운송장과 반품배송비용 영수증 첨부</div>
           </div>
 
-            <div v-if="params['return'].length>0" class="flex-between size-13"
+            <div v-if="params['return']" class="flex-between size-13"
               style="color:#696969;padding:0 12px 0 28px">
-              <div class="col-9">{{ params['return'][0][0].name }}</div>
+              <div class="col-9">{{ params['return'].name }}</div>
               <div class="btn-delete unselect weight-400 col-3 text-center"
                 @click="clickDelete('return')">삭제</div>
             </div>
@@ -547,8 +547,7 @@ export default {
   name: "InsuranceRequest",
   data() {
     return {
-      detail: {
-      },
+      detail: undefined,
       checkState: false,
       agreeState: false,
       nameDrop: false,
@@ -569,20 +568,19 @@ export default {
         border: '1px solid #dddddd'
       },
       params: {
-        order_id: '',
-        identification: [],
-        bank_book: [],
-        invoice: [],
-        delivery: [],
-        seller: [],
-        damage: [],
-        misdelivery: [],
-        theft: [],
-        lost: [],
-        return: [],
-        privacy: [],
-        send_back: [],
-        accident: []
+        identification: undefined,
+        bank_book: undefined,
+        invoice: undefined,
+        delivery: undefined,
+        seller: undefined,
+        damage: undefined,
+        misdelivery: undefined,
+        theft: undefined,
+        lost: undefined,
+        return: undefined,
+        privacy: undefined,
+        send_back: undefined,
+        accident: undefined
       },
       commonList: ['privacy', 'identification', 'bank_book', 'invoice', 'delivery', 'seller'],
       acciList: ['damage', 'misdelivery', 'theft', 'lost', 'return'],
@@ -631,26 +629,26 @@ export default {
       }
     },
     onFileChange(e, val) {
-      let file = e.target.files;
-      this.params[val].push(file);
+      let file = e.target.files[0];
+      // let file = e.target.files;
+      //this.params[val].push(file);
       if(this.acciList.indexOf(val)>-1) {
         this.selectedAcci = val;
       }
-      console.log(file)
-      // let reader = new FileReader();
-      // reader.readAsDataURL(file);
-      // reader.onload = (f) => {
-      //   let ext = file.name.split('.')[file.name.split('.').length-1];
-      //   this.params[val].push({
-      //     name: file.name,
-      //     file : f.srcElement.result,
-      //     size: file.size,
-      //     extention: ext
-      //   })
-      // }
+      let reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = (f) => {
+        let ext = file.name.split('.')[file.name.split('.').length-1];
+        this.params[val] = {
+          name: file.name,
+          file : f.srcElement.result,
+          size: file.size,
+          extention: ext
+        }
+      }
     },
     clickDelete(val) {
-      this.params[val] = [];
+      this.params[val] = undefined;
       if(this.acciList.indexOf(val)>-1) {
         this.selectedAcci = undefined;
       }
@@ -673,7 +671,7 @@ export default {
       }
       else {
         await params.forEach(item => {
-          if(item[1].length===0) {
+          if(!item[1]) {
             if(this.commonList.indexOf(item[0])>-1) {
               this.commonInvalid = true;
             }
@@ -684,7 +682,7 @@ export default {
           else {
             if(this.acciList.indexOf(item[0])>-1) {
               accident.push(true);
-              param['accident'] = item[1][0];
+              param['accident'] = item[1]['file'];
               if(item[0]==='damage') {
                 param['accident_type'] = '파손시'
               }
@@ -702,11 +700,12 @@ export default {
               }
             }
             else {
-              param[item[0]] = item[1][0];
+              param[item[0]] = item[1]['file'];
             }
           }
         });
       }
+      param['order_id'] = this.detail.id
 
       if(accident.indexOf(true)===-1) {
         this.acciInvalid = true;
@@ -714,15 +713,8 @@ export default {
 
       if(this.commonInvalid | this.acciInvalid | this.privacyInvalid) return;
 
-      let formData = new FormData();
-      let headers = { 'Content-Type': 'multipart/form-data' }
-      // param.order_id = this.detail.id;
-      formData.append('order_id', this.detail.id);
-      this.addFormData(formData, param);
-      console.log('formdata',formData,'param',param)
-      // params.order_id = this.detail.id;
-      this.$axios.post(`/user/claim`, formData, headers).then(res => {
-        console.log('res',res)
+      this.$axios.post(`/user/claim`, param).then(res => {
+        // console.log('res',res)
         if(res.status===200) {
           this.routerPush('request_done')
         }

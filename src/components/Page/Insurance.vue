@@ -117,9 +117,9 @@ export default {
       return insurance_product;
     },
     getData() {
-      this.$axios.get(`/user/${this.$route.query.id}/order`).then(res => {
+      this.$axios.get(`/user/order/${this.$route.query.id}`).then(res => {
         if(res.status===200) {
-          if(res.data.data.length>0) {
+          if(res.data.docs.length>0) {
             this.list = res.data.data;
 
             // this.list[0].status = 4;
