@@ -2,6 +2,7 @@
   <div id="app" :style="appStyle">
     <router-view v-if="vRouter && vHeadDone" />
     <toast/>
+    <loading-spinner v-if="vLoading"/>
   </div>
 </template>
 
@@ -12,9 +13,11 @@
   import router from './router/index'
   let fernet = require('fernet');
   import AuthMixin from "./components/Mixins/AuthMixin";
+  import LoadingSpinner from "./components/Components/Common/LoadingSpinner";
 
   export default {
     components: {
+      LoadingSpinner,
       Toast
     },
     name: 'App',
@@ -52,6 +55,7 @@
     },
     data() {
       return {
+        vLoading: false,
         vHeadDone: false,
         backendUrl: 'http://localhost:8000/',
         vRouter: false,
@@ -65,6 +69,11 @@
         },
         overlayLink: '',
         viewportContent: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'
+      }
+    },
+    watch: {
+      '$store.getters.loadingSpinner'(n) {
+        this.vLoading = n;
       }
     },
     methods: {
@@ -200,7 +209,7 @@
         // 서비스 PC모드 (서비스 PC device 지원 여부)
         let pc_enable = this.$store.getters.pcMode;
         console.log('setDevice', navigator.userAgent)
-        
+
         // 화면 너비
         // 모바일
         if (navigator.userAgent.match(/Android/i)
@@ -287,7 +296,7 @@
 
 
   /* ***
-    img lazy loading 
+    img lazy loading
     *** */
 
   /* img tag */

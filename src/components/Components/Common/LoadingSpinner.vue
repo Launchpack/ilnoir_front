@@ -1,9 +1,11 @@
 <template>
-  <div class="lp-loading-bg">
-    <!-- <div class="lp-loading-dim"></div> -->
-    <div class="lp-loading">
-      <div class="lp-spinner">
-        <div v-for="idx in 12" :style="brandBgColor.primary" :key="'spn-'+idx"></div>
+  <div class="loading-container">
+    <div class="loading-wrapper">
+      <div class="message">{{ message }}</div>
+      <div class="flex-center">
+        <div class="lp-spinner">
+          <div v-for="idx in 12" :key="'spn-'+idx"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -11,30 +13,41 @@
 
 <script>
   export default {
-    name: "LoadingSpinner"
+    name: "Loading",
+    props: {
+      message: {
+        type: String,
+        default: '진행중입니다'
+      }
+    },
+    created() {
+      document.body.style.overflow = 'hidden';
+    },
+    beforeDestroy() {
+      document.body.style.overflow = '';
+    },
+    data() {
+      return {}
+    },
+    methods: {}
   }
 </script>
 
-<style lang="stylus" type="stylus" scoped>
-  .lp-loading-bg
-    z-index 999999999
-    top 0
-    left 0
-    height 100vh
+<style lang="stylus" scoped>
+  .loading-container
     position fixed
-    width 100%
-
-  .lp-loading
-    position absolute
-    top 45%
-    left 50%
-    transform translateX(-50%)
-
-  .lp-loading-dim
+    z-index 1000
     width 100%
     height 100%
-    background-color rgba(0,0,0,0.18)
+    display flex
+    align-items center
+    justify-content center
+    top 0
 
+  .loading-wrapper
+    background rgba(0,0,0,0.8)
+    border-radius 8px
+    padding 0 32px
 
   @keyframes lp-spinner
     0%
@@ -62,6 +75,7 @@
     border-radius 40%
     -webkit-transform-origin 6px 52px
     transform-origin 6px 52px
+    background-color #4f76ff
 
   .lp-spinner div:nth-child(1)
     -webkit-transform rotate(0deg)
@@ -141,6 +155,10 @@
     -webkit-transform translate(-40px, -40px) scale(0.4) translate(40px, 40px)
     transform translate(-40px, -40px) scale(0.4) translate(40px, 40px)
 
-
-
+  .message
+    color white
+    text-align center
+    margin 32px 0 4px 0
+    font-size 17px
+    background-color rgba(0,0,0,0.8)
 </style>

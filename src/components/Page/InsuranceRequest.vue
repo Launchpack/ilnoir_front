@@ -713,14 +713,16 @@ export default {
 
       if(this.commonInvalid | this.acciInvalid | this.privacyInvalid) return;
 
+      this.$store.commit('setLoadingSpinner', true);
       this.$axios.post(`/user/claim`, param).then(res => {
-        // console.log('res',res)
+        this.$store.commit('setLoadingSpinner', false);
         if(res.status===200) {
           this.routerPush('request_done')
         }
+      }).catch(()=>{
+        this.toast('서버 오류로 청구하기 실패하였습니다.');
+        this.$store.commit('setLoadingSpinner', false);
       });
-
-      console.log('done')
     },
     addFormData (formData, param) {
       for (let [key, value] of Object.entries(param)) {
