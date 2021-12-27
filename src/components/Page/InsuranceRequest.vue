@@ -540,11 +540,24 @@
     </div>
   </div>
 
+  <div class="popup-modal">
+    <sweet-modal ref="popupModal" overlay-theme="dark">
+      <div class="popup-content" v-html="popup.claim"></div>
+      <div class="flex-end" style="margin-top:24px">
+        <button class="button is-primary" @click="$refs.popupModal.close()">확인</button>
+      </div>
+    </sweet-modal>
+  </div>
+
 </div>
 </template>
 <script>
+import {SweetModal} from "sweet-modal-vue"
 export default {
   name: "InsuranceRequest",
+  components: {
+    SweetModal
+  },
   data() {
     return {
       detail: undefined,
@@ -584,7 +597,8 @@ export default {
       },
       commonList: ['privacy', 'identification', 'bank_book', 'invoice', 'delivery', 'seller'],
       acciList: ['damage', 'misdelivery', 'theft', 'lost', 'return'],
-      selectedAcci: undefined
+      selectedAcci: undefined,
+      popup: undefined
     }
   },
   created() {
@@ -604,6 +618,14 @@ export default {
       this.$axios.get(`/user/${this.$route.query.user}/order/${this.$route.query.id}`).then(res => {
         if(res.status===200) {
           this.detail = res.data;
+
+          this.$axios.get('public/popup').then(res=>{
+            this.popup = res.data;
+
+            this.$nextTick(()=>{
+              this.$refs.popupModal.open();
+            })
+          })
         }
       });
     },
@@ -775,7 +797,7 @@ export default {
       else if(val==='theft') {
         console.log('theft')
       }
-      else if(val='lost') {
+      else if(val==='lost') {
         console.log('lost')
       }
       else {
@@ -917,4 +939,26 @@ export default {
 .t-content {
   margin-bottom: 4px;
 }
+</style>
+<style>
+  .popup-modal ol,
+  .popup-modal ul {
+    list-style: unset;
+  }
+  .popup-modal ul {
+    padding-inline-start: 40px;
+  }
+  .popup-modal .sweet-modal.is-alert .sweet-content {
+    text-align: unset
+  }
+  .popup-modal .popup-content {
+    max-height: 500px;
+    overflow-y: auto;
+  }
+  .popup-modal .is-mobile-fullscreen {
+    margin: 0 12px;
+  }
+</style>
+<style lang="stylus" scoped>
+  @import '~assets/css/lp_main';
 </style>

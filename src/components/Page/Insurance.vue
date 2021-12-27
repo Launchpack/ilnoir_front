@@ -119,10 +119,11 @@ export default {
     getData() {
       this.$axios.get(`/user/order/${this.$route.query.id}`).then(res => {
         if(res.status===200) {
-          if(res.data.docs.length>0) {
+          if (res.data.data.length > 0) {
             this.list = res.data.data;
-
-            // this.list[0].status = 4;
+            this.filtered.page_length = res.data.page_length;
+            this.filtered.total_page = res.data.total_page;
+            this.filtered.cur_page = res.data.cur_page;
           }
         }
       })
@@ -130,23 +131,17 @@ export default {
     statusKor(item) {
       if(item.status===0) {
         return '검토 대기'
-      }
-      else if(item.status===1) {
+      } else if(item.status===1) {
         return '검토중'
-      }
-      else if(item.status===2) {
+      } else if(item.status===2) {
         return '검토 완료'
-      }
-      else if(item.status===3) {
-        return '보험사 전달 완료'
-      }
-      else if(item.status===4) {
-        return '보험 상품 가입중'
-      }
-      else if(item.status===5) {
-        return '보험 상품 만료'
-      }
-      else {
+      } else if (item.status === 3) {
+        return '검토 완료'
+      } else if (item.status === 4) {
+        return '검토대기'
+      } else if (item.status === 5) {
+        return '면책'
+      } else {
         return ''
       }
     },
