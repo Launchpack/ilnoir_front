@@ -119,11 +119,11 @@
         } else if (item.status === 2) {
           return '검토 완료'
         } else if (item.status === 3) {
-          return '보험사 전달 완료'
+          return '검토 완료'
         } else if (item.status === 4) {
-          return '보험 상품 가입중'
+          return '검토대기'
         } else if (item.status === 5) {
-          return '보험 상품 만료'
+          return '면책'
         } else {
           return ''
         }

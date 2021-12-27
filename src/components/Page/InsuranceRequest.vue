@@ -540,6 +540,16 @@
     </div>
   </div>
 
+  <div class="position-fixed flex-center" :style="modalStyle" v-if="popup && modalPopupState">
+    <div style="width:calc(100% - 32px)">
+      <div class="popup-content" v-html="popup.claim"></div>
+      <div class="flex-align weight-400 text-center">
+        <div class="modal-btn size-15 unselect" style="background-color:#8a8a8a"
+             @click.stop.prevent="modalPopupState=false">닫기</div>
+      </div>
+    </div>
+  </div>
+
 </div>
 </template>
 <script>
@@ -584,7 +594,9 @@ export default {
       },
       commonList: ['privacy', 'identification', 'bank_book', 'invoice', 'delivery', 'seller'],
       acciList: ['damage', 'misdelivery', 'theft', 'lost', 'return'],
-      selectedAcci: undefined
+      selectedAcci: undefined,
+      popup: undefined,
+      modalPopupState: true
     }
   },
   created() {
@@ -604,6 +616,10 @@ export default {
       this.$axios.get(`/user/${this.$route.query.user}/order/${this.$route.query.id}`).then(res => {
         if(res.status===200) {
           this.detail = res.data;
+
+          this.$axios.get('public/popup').then(res=>{
+            this.popup = res.data;
+          })
         }
       });
     },
@@ -775,7 +791,7 @@ export default {
       else if(val==='theft') {
         console.log('theft')
       }
-      else if(val='lost') {
+      else if(val==='lost') {
         console.log('lost')
       }
       else {
@@ -917,4 +933,20 @@ export default {
 .t-content {
   margin-bottom: 4px;
 }
+</style>
+<style lang="stylus" scoped>
+  @import '~assets/css/lp_main';
+  .popup-content
+    max-height 500px
+    overflow-y auto
+    background-color white
+    padding 36px 20px
+    line-height 1.5
+</style>
+<style lang="stylus">
+  .popup-content ol
+  .popup-content ul
+    list-style unset
+  .popup-content ul
+    padding-inline-start 40px
 </style>
