@@ -511,27 +511,22 @@
     </div>
   </div>
 
-  <div class="popup-modal">
-    <sweet-modal ref="popupModal" overlay-theme="dark">
+  <div class="position-fixed flex-center" :style="modalStyle" v-if="popup && modalPopupState">
+    <div style="width:600px">
       <div class="popup-content" v-html="popup.claim"></div>
-      <div class="flex-end" style="margin-top:24px">
-        <button class="button is-primary" @click="$refs.popupModal.close()">확인</button>
+      <div class="flex-align weight-400 text-center">
+        <div class="modal-btn size-16 unselect" style="background-color:#8a8a8a;width:600px"
+             @click.stop.prevent="modalPopupState=false">닫기
+        </div>
       </div>
-    </sweet-modal>
+    </div>
   </div>
 
 </div>
 </template>
 <script>
-import CInputFileUploader from "@/components/Components/Form/CInputFileUploader";
-import {SweetModal} from "sweet-modal-vue"
-
 export default {
   name: "InsuranceRequest",
-  components: {
-    CInputFileUploader,
-    SweetModal
-  },
   data() {
     return {
       detail: undefined,
@@ -571,7 +566,8 @@ export default {
       commonList: ['privacy', 'identification', 'bank_book', 'invoice', 'delivery', 'seller'],
       acciList: ['damage', 'misdelivery', 'theft', 'lost', 'return'],
       selectedAcci: undefined,
-      popup: undefined
+      popup: undefined,
+      modalPopupState: true
     }
   },
   created() {
@@ -594,10 +590,6 @@ export default {
 
           this.$axios.get('public/popup').then(res=>{
             this.popup = res.data;
-
-            this.$nextTick(()=>{
-              this.$refs.popupModal.open();
-            })
           })
         }
       });
@@ -883,23 +875,19 @@ td {
   padding: 6px 12px;
 }
 </style>
-<style>
-  .popup-modal ol,
-  .popup-modal ul {
-    list-style: unset;
-  }
-  .popup-modal ul {
-    padding-inline-start: 40px;
-  }
-  .popup-modal .sweet-modal.is-alert .sweet-content {
-    text-align: unset
-  }
-  .popup-modal .popup-content {
-    max-height: 500px;
-    overflow-y: auto;
-    margin-top: 24px;
-  }
-</style>
 <style lang="stylus" scoped>
   @import '~assets/css/lp_main';
+  .popup-content
+    max-height 500px
+    overflow-y auto
+    background-color white
+    padding 36px 20px
+    line-height 1.5
+</style>
+<style lang="stylus">
+  .popup-content ol
+  .popup-content ul
+    list-style unset
+  .popup-content ul
+    padding-inline-start 40px
 </style>
