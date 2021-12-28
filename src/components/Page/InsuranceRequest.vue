@@ -319,7 +319,7 @@
                 v-if="acciState('lost')">파일첨부</label>
               <a class="btn-download unselect weight-400"
                 v-if="acciState('lost')"
-                href="https://ilnoir.s3.ap-northeast-2.amazonaws.com/claim/static/form/lost.pdf"
+                href="https://ilnoir.s3.ap-northeast-2.amazonaws.com/claim/static/form/lost.docx"
                 download
                 target="_blank"
                 @click="clickDown('lost')">양식 다운로드</a>
