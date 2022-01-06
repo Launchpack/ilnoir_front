@@ -696,7 +696,7 @@ export default {
           this.routerPush('request_done')
         }
       }).catch(()=>{
-        this.toast('첨부하신 파일 사이즈가 3OOMB를 초과하였습니다. 전체 첨부 파일 사이즈를 3OOMB 이하로 하여 제출하세요');
+        this.toast('서버 오류로 청구하기 실패하였습니다.');
         this.$store.commit('setLoadingSpinner', false);
       });
     },
