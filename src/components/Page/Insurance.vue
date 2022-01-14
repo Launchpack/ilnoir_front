@@ -119,10 +119,11 @@ export default {
     getData() {
       this.$axios.get(`/user/order/${this.$route.query.id}`).then(res => {
         if(res.status===200) {
-          if(res.data.docs.length>0) {
+          if (res.data.data.length > 0) {
             this.list = res.data.data;
-
-            // this.list[0].status = 4;
+            this.filtered.page_length = res.data.page_length;
+            this.filtered.total_page = res.data.total_page;
+            this.filtered.cur_page = res.data.cur_page;
           }
         }
       })
