@@ -85,7 +85,7 @@
               <label class="btn-upload unselect weight-400" style="margin-right:12px"
                 for="privacy">파일첨부</label>
               <a class="btn-download unselect weight-400"
-                href="https://ilnoir.s3.ap-northeast-2.amazonaws.com/claim/static/form/privacy.docx"
+                href="https://ilnoir.s3.ap-northeast-2.amazonaws.com/claim/static/form/privacy220301.docx"
                 download
                 target="_blank"
                 @click="clickDown('privacy')">양식 다운로드</a>
@@ -539,7 +539,7 @@
         @click.stop.prevent="clickModal">확인</div>
     </div>
   </div>
-
+  <transition name="fade">
   <div class="position-fixed flex-center" :style="modalStyle" v-if="popup && modalPopupState">
     <div style="width:calc(100% - 32px)">
       <div class="popup-content" v-html="popup.claim"></div>
@@ -549,7 +549,7 @@
       </div>
     </div>
   </div>
-
+  </transition>
 </div>
 </template>
 <script>
@@ -596,7 +596,7 @@ export default {
       acciList: ['damage', 'misdelivery', 'theft', 'lost', 'return'],
       selectedAcci: undefined,
       popup: undefined,
-      modalPopupState: true
+      modalPopupState: false
     }
   },
   created() {
@@ -619,6 +619,7 @@ export default {
 
           this.$axios.get('public/popup').then(res=>{
             this.popup = res.data;
+            this.modalPopupState = this.popup.claim !== null && this.popup.claim !== '';
           })
         }
       });

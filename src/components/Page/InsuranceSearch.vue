@@ -8,12 +8,13 @@
 
       <div class="size-19 text-center weight-500 margin-bottom-12"
         style="color:#212121">가입 보험 조회</div>
-      <div class="size-12 text-center" style="color:#515151">보험 가입 및 주문 시 기재한 이용자 성함과 신청서번호를 입력하세요.</div>
+      <div class="size-12 text-center"
+           style="line-height:18px;color:#515151">보험 가입 및 주문 시 기재한<br>이용자 성함과 배송주문번호를 입력하세요.</div>
 
       <div style="padding:0 8px 48px">
         <c-input-text placeholder="이용자 성함" :inputCustomStyle="inputCustomStyle"
           @update:value="updateName"></c-input-text>
-        <c-input-text placeholder="신청서번호" :inputCustomStyle="inputCustomStyle"
+        <c-input-text placeholder="배송주문번호" :inputCustomStyle="inputCustomStyle"
                       @update:value="updatePhone"></c-input-text>
         <!--<c-input-text placeholder="휴대전화번호" :inputCustomStyle="inputCustomStyle"
           @update:value="updatePhone"></c-input-text>-->

@@ -129,21 +129,14 @@ export default {
       })
     },
     statusKor(item) {
-      if(item.status===0) {
-        return '검토 대기'
-      } else if(item.status===1) {
-        return '검토중'
-      } else if(item.status===2) {
-        return '검토 완료'
-      } else if (item.status === 3) {
-        return '검토 완료'
-      } else if (item.status === 4) {
-        return '검토대기'
-      } else if (item.status === 5) {
-        return '면책'
-      } else {
-        return ''
-      }
+      return {
+        0: '검토대기',
+        1: '검토중',
+        2: '검토중',
+        3: '보험사 전달 및 검토 완료',
+        4: '검토대기',
+        5: '면책'
+      }[item.status];
     },
     computedDate(item) {
       if(item.invoice_date.length>0) {
