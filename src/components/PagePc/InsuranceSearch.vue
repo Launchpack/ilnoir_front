@@ -9,7 +9,7 @@
       <div style="padding:20px 8px 60px">
         <c-input-text placeholder="이용자 성함" :inputCustomStyle="inputCustomStyle"
           @update:value="updateName"></c-input-text>
-        <c-input-text placeholder="배송주문번호" :inputCustomStyle="inputCustomStyle"
+        <c-input-text placeholder="배송주문번호 (또는 운송장번호)" :inputCustomStyle="inputCustomStyle"
                       @onEnter="clickRequest"
                       @update:value="updatePhone"></c-input-text>
         <!--<c-input-text placeholder="휴대전화번호" :inputCustomStyle="inputCustomStyle"
