@@ -26,10 +26,10 @@
       <div v-for="(item,idx) in list" :key="'key-'+idx">
         <div class="list-content flex-align text-center size-14 weight-400" style="color:#212121"
              :style="[item.status===5 ? {color: '#aaaaaa'} : {color: '#212121'}]">
-          <div class="col-1">{{ item.order_number }}</div>
+          <div class="col-1" style="word-break: break-all">{{ item.order_number }}</div>
           <div class="col-2">{{ insuranceProductName(item.total_product_price) }}</div>
           <div class="col-1">{{ item.user.name }}</div>
-          <div class="col-2">{{ item.stock_number }}</div>
+          <div class="col-2" style="word-break: break-all">{{ item.stock_number }}</div>
           <div class="col-1">{{ computedDate(item) }}</div>
           <div class="col-1">{{ item.total_product_price | currency }}</div>
           <div class="col-2">{{ statusKor(item) }}</div>
