@@ -1,1 +1,1 @@
-aws s3 cp dist/ s3://ilnoir/claim/ --recursive
+aws s3 cp dist/ s3://ilnoir-croket/claim/ --recursive
