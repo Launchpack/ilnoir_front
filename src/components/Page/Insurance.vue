@@ -120,6 +120,12 @@ export default {
       this.$axios.get(`/user/order/${this.$route.query.id}`).then(res => {
         if(res.status===200) {
           if (res.data.data.length > 0) {
+            // 임시
+            res.data.data.forEach(i => {
+              if(i.status === 5) {
+                i.status = 4;
+              }
+            });
             this.list = res.data.data;
             this.filtered.page_length = res.data.page_length;
             this.filtered.total_page = res.data.total_page;
