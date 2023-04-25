@@ -108,7 +108,8 @@
             <div class="flex-align">
               <i class="material-icons" style="margin-right:8px;font-size:20px"
                  :style="params['invoice'] ? {color:'#4f76ff'} : {color:'#dddddd'} ">check</i>
-              <div class="size-15 weight-400">운송장</div>
+              <div class="size-15 weight-400" style="margin-right:20px">유니패스 조회 화면 캡처</div>
+              <div class="size-14 weight-400" style="color:#9e9e9e">수입화물진행정보 창에서 상위 첫번째 테이블만 캡처 첨부 </div>
             </div>
 
             <div v-if="params['invoice']" class="flex-align size-13"
