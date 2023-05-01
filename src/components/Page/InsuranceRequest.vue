@@ -89,7 +89,7 @@
             <label class="btn-upload unselect weight-400" style="margin-right:12px"
                    for="privacy">파일첨부</label>
             <a class="btn-download unselect weight-400"
-               href="https://ilnoir.s3.ap-northeast-2.amazonaws.com/claim/static/form/privacy220301.docx"
+               href="https://ilnoir.s3.ap-northeast-2.amazonaws.com/claim/static/form/claim_form.docx"
                download
                target="_blank"
                @click="clickDown('privacy')">양식 다운로드</a>
@@ -173,7 +173,7 @@
           <div class="flex-align margin-bottom-10">
             <i class="material-icons" style="margin-right:8px;font-size:18px"
                :style="params['delivery'] ? {color:'#4f76ff'} : {color:'#dddddd'} ">check</i>
-            <div class="size-14 weight-400">택배시 배송이력화면 캡쳐</div>
+            <div class="size-14 weight-400">택배사 배송이력화면 캡쳐</div>
           </div>
 
           <div v-if="params['delivery']" class="flex-between size-13"
