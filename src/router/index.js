@@ -42,11 +42,11 @@ const index = new Router({
 })
 
 index.afterEach((to) => {
-  if((to.path === '/claim/' || to.path === '/claim') && to.params.id === undefined) {
+  if((to.path === '/claim_real/' || to.path === '/claim_real') && to.params.id === undefined) {
     if(isMobile) {
-      index.replace(`/claim/${process.env.VUE_APP_SPLASH_PAGE}`);
+      index.replace(`/claim_real/${process.env.VUE_APP_SPLASH_PAGE}`);
     } else {
-      index.replace(`/claim/${process.env.VUE_APP_START_PAGE}`);
+      index.replace(`/claim_real/${process.env.VUE_APP_START_PAGE}`);
     }
   }
 })

@@ -7,7 +7,7 @@ const assetsPath = function (_path) {
 
 module.exports = {
   publicPath: process.env.NODE_ENV === 'production'
-    ? `/claim/` : '/',
+    ? `/claim_real/` : '/',
   runtimeCompiler: true,
   productionSourceMap: false,
   configureWebpack: {

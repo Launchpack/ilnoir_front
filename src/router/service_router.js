@@ -1,7 +1,7 @@
 export default {
     routes: [
         {
-            path: '/claim',
+            path: '/claim_real',
             component: () => import ('../components/Pages/Main'),
             children: [
                     {
