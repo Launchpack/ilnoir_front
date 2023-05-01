@@ -131,7 +131,7 @@
             <div class="flex-align">
               <i class="material-icons" style="margin-right:8px;font-size:20px"
                  :style="params['delivery'] ? {color:'#4f76ff'} : {color:'#dddddd'} ">check</i>
-              <div class="size-15 weight-400">택배시 배송이력화면 캡쳐</div>
+              <div class="size-15 weight-400">택배사 배송이력화면 캡쳐</div>
             </div>
 
             <div v-if="params['delivery']" class="flex-align size-13"
