@@ -89,7 +89,7 @@
             <label class="btn-upload unselect weight-400" style="margin-right:12px"
                    for="privacy">파일첨부</label>
             <a class="btn-download unselect weight-400"
-               href="https://ilnoir.s3.ap-northeast-2.amazonaws.com/claim/static/form/privacy220301.docx"
+               href="https://ilnoir.s3.ap-northeast-2.amazonaws.com/claim/static/form/privacy230803.docx"
                download
                target="_blank"
                @click="clickDown('privacy')">양식 다운로드</a>
@@ -310,7 +310,7 @@
                    v-if="acciState('theft')">파일첨부</label>
             <a class="btn-download unselect weight-400"
                v-if="acciState('theft')"
-               href="https://ilnoir.s3.ap-northeast-2.amazonaws.com/claim/static/form/theft.pdf"
+               href="https://ilnoir.s3.ap-northeast-2.amazonaws.com/claim/static/form/theft230803.docx"
                download
                target="_blank"
                @click="clickDown('theft')">양식 다운로드</a>
@@ -338,7 +338,7 @@
                    v-if="acciState('lost')">파일첨부</label>
             <a class="btn-download unselect weight-400"
                v-if="acciState('lost')"
-               href="https://ilnoir.s3.ap-northeast-2.amazonaws.com/claim/static/form/lost.docx"
+               href="https://ilnoir.s3.ap-northeast-2.amazonaws.com/claim/static/form/lost230803.docx"
                download
                target="_blank"
                @click="clickDown('lost')">양식 다운로드</a>
