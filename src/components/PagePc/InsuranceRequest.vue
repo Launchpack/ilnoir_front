@@ -48,7 +48,7 @@
             </div>
             <div v-else class="size-13 flex-align">
               <a class="btn-download unselect weight-400"
-                 :href="privacyFile"
+                 :href="fileUrl('privacy')"
                  download
                  target="_blank"
                  @click="clickDown('privacy')">양식 다운로드</a>
@@ -265,7 +265,7 @@
             <div v-else class="size-13 flex-align">
               <a class="btn-download unselect weight-400"
                  v-if="acciState('theft')"
-                 href="https://ilnoir.s3.ap-northeast-2.amazonaws.com/claim/static/form/theft230803.docx"
+                 :href="fileUrl('theft')"
                  download
                  target="_blank"
                  @click="clickDown('theft')">양식 다운로드</a>
@@ -294,7 +294,7 @@
             <div v-else class="size-13 flex-align">
               <a class="btn-download unselect weight-400"
                  v-if="acciState('lost')"
-                 href="https://ilnoir.s3.ap-northeast-2.amazonaws.com/claim/static/form/lost230803.docx"
+                 :href="fileUrl('lost')"
                  download
                  target="_blank"
                  @click="clickDown('lost')">양식 다운로드</a>
@@ -623,6 +623,22 @@
       this.getData();
     },
     methods: {
+      fileUrl(type) {
+        let url = 'https://ilnoir.s3.ap-northeast-2.amazonaws.com/claim/static/form/filename';
+        const files = {
+          privacy: 'privacy230803.docx',
+          theft: 'theft230803.docx',
+          lost: 'lost230803.docx'
+        };
+        const files_real = {
+          privacy: 'claim_form.docx',
+          theft: 'theft.pdf',
+          lost: 'lost.docx'
+        };
+        return this.$route.path.indexOf('claim_real')>-1
+          ? url.replace('filename', files_real[type])
+          : url.replace('filename', files[type]);
+      },
       insuranceProductName(price) {
         let insurance_product = '';
         if (price <= 1000000) {
@@ -801,13 +817,6 @@
       }
     },
     computed: {
-      privacyFile() {
-        let url = 'https://ilnoir.s3.ap-northeast-2.amazonaws.com/claim/static/form/privacy230803.docx';
-        if(this.$route.path.indexOf('claim_real')>-1) {
-          url = url.replace('privacy230803', 'claim_form');
-        }
-        return url;
-      },
       modalStyle() {
         return {
           width: `${window.innerWidth}px`,

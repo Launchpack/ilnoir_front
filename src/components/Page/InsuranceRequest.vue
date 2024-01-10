@@ -89,7 +89,7 @@
             <label class="btn-upload unselect weight-400" style="margin-right:12px"
                    for="privacy">파일첨부</label>
             <a class="btn-download unselect weight-400"
-               :href="privacyFile"
+               :href="fileUrl('privacy')"
                download
                target="_blank"
                @click="clickDown('privacy')">양식 다운로드</a>
@@ -310,7 +310,7 @@
                    v-if="acciState('theft')">파일첨부</label>
             <a class="btn-download unselect weight-400"
                v-if="acciState('theft')"
-               href="https://ilnoir.s3.ap-northeast-2.amazonaws.com/claim/static/form/theft230803.docx"
+               :href="fileUrl('theft')"
                download
                target="_blank"
                @click="clickDown('theft')">양식 다운로드</a>
@@ -338,7 +338,7 @@
                    v-if="acciState('lost')">파일첨부</label>
             <a class="btn-download unselect weight-400"
                v-if="acciState('lost')"
-               href="https://ilnoir.s3.ap-northeast-2.amazonaws.com/claim/static/form/lost230803.docx"
+               :href="fileUrl('lost')"
                download
                target="_blank"
                @click="clickDown('lost')">양식 다운로드</a>
@@ -811,6 +811,22 @@
       clickName() {
         this.nameDrop = !this.nameDrop;
       },
+      fileUrl(type) {
+        let url = 'https://ilnoir.s3.ap-northeast-2.amazonaws.com/claim/static/form/filename';
+        const files = {
+          privacy: 'privacy230803.docx',
+          theft: 'theft230803.docx',
+          lost: 'lost230803.docx'
+        };
+        const files_real = {
+          privacy: 'claim_form.docx',
+          theft: 'theft.pdf',
+          lost: 'lost.docx'
+        };
+        return this.$route.path.indexOf('claim_real')>-1
+          ? url.replace('filename', files_real[type])
+          : url.replace('filename', files[type]);
+      },
       clickDown(val) {
         if (val === 'privacy') {
           // let filename = "https://launchpack-storage.s3.ap-northeast-2.amazonaws.com/media/grit12/non-path/12371331_thumb.png";
@@ -839,13 +855,6 @@
       }
     },
     computed: {
-      privacyFile() {
-        let url = 'https://ilnoir.s3.ap-northeast-2.amazonaws.com/claim/static/form/privacy230803.docx';
-        if(this.$route.path.indexOf('claim_real')>-1) {
-          url = url.replace('privacy230803', 'claim_form');
-        }
-        return url;
-      },
       modalStyle() {
         return {
           width: `${window.innerWidth}px`,
