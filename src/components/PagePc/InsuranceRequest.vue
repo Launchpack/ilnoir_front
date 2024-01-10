@@ -48,7 +48,7 @@
             </div>
             <div v-else class="size-13 flex-align">
               <a class="btn-download unselect weight-400"
-                 href="https://ilnoir.s3.ap-northeast-2.amazonaws.com/claim/static/form/privacy230803.docx"
+                 :href="privacyFile"
                  download
                  target="_blank"
                  @click="clickDown('privacy')">양식 다운로드</a>
@@ -801,6 +801,13 @@
       }
     },
     computed: {
+      privacyFile() {
+        let url = 'https://ilnoir.s3.ap-northeast-2.amazonaws.com/claim/static/form/privacy230803.docx';
+        if(this.$route.path.indexOf('claim_real')>-1) {
+          url = url.replace('privacy230803', 'claim_form');
+        }
+        return url;
+      },
       modalStyle() {
         return {
           width: `${window.innerWidth}px`,
