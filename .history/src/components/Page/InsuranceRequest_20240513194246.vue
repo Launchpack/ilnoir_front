@@ -761,14 +761,14 @@
       fileUrl(type) {
         let url = 'https://ilnoir.s3.ap-northeast-2.amazonaws.com/claim/static/form/filename';
         const files = {
-          privacy: 'privacy240604.docx',
-          theft: 'theft240604.docx',
-          lost: 'lost240604.docx'
+          privacy: 'privacy240318.docx',
+          theft: 'theft240318.docx',
+          lost: 'lost240318.docx'
         };
         const files_real = {
-         privacy: 'privacy240604.docx',
-          theft: 'theft240604.docx',
-          lost: 'lost240604.docx'
+         privacy: 'privacy240318.docx',
+          theft: 'theft240318.docx',
+          lost: 'lost240318.docx'
         };
         return this.$route.path.indexOf('claim_real')>-1
           ? url.replace('filename', files_real[type])
