@@ -572,12 +572,12 @@
       fileUrl(type) {
         let url = 'https://ilnoir.s3.ap-northeast-2.amazonaws.com/claim/static/form/filename';
         const files = {
-          privacy: 'privacy240604.docx',
+          privacy: 'privacy241029.docx',
           theft: 'theft240604.docx',
           lost: 'lost240604.docx'
         };
         const files_real = {
-          privacy: 'privacy240604.docx',
+          privacy: 'privacy241029.docx',
           theft: 'theft240604.docx',
           lost: 'lost240604.docx'
         };
