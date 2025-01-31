@@ -33,13 +33,11 @@
 
 <script>
 import CInputText from "@/components/Components/Form/CInputText";
-import CInputNumber from "@/components/Components/Form/CInputNumber";
 
 export default {
   name: "InsuranceSearch",
   components: {
-    CInputText,
-    CInputNumber
+    CInputText
   },
   data() {
     return {
@@ -72,8 +70,10 @@ export default {
       }
 
       this.$axios.post('/user/sign/select', this.info).then(res => {
-        console.log(res)
-        if(res.status===200) {
+        if(res.data.status===400) {
+          this.toast(res.data.message);
+        }
+        else {
           this.routerPush(`insurance?id=${res.data.order_id}`);
         }
       }).catch(err => {
